@@ -5,6 +5,7 @@ import Eclipse from "./Eclipse";
 import Event from "./Event";
 import Command from "./Command";
 import SubCommand from "./SubCommand";
+import Button from "./Button";
 
 export default class Listeners implements Handler {
     client: Eclipse;
@@ -66,6 +67,23 @@ export default class Listeners implements Handler {
                 this.client.subCommands.set(command.command + "." + command.name, command as SubCommand);
 
             else this.client.subCommands.set(command.command + "." + command.group + "." + command.name, command as SubCommand);
+
+            return delete require.cache[require.resolve(file)]
+
+            
+        });
+    }
+
+    async createButtonInteractions() {
+        const files = (await glob(`build/buttons/**/*.js`)).map(filePath => path.resolve(filePath));
+
+        files.map(async (file: string) => {
+            const button: Button = new(await import(file)).default(this.client);
+
+            if(!button.custom_id)
+                return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid id.`);
+
+            this.client.buttons.set(button.custom_id, button as Button);
 
             return delete require.cache[require.resolve(file)]
 
