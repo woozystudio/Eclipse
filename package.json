@@ -6,7 +6,9 @@
     "clean": "del /s /q build",
     "build": "tsc --build",
     "start": "npm run clean && npm run build && node build/index.js",
-    "start:noclean": "npm run build && node build/index.js"
+    "start:noclean": "npm run build && node build/index.js",
+    "dev": "npm run clean && npm run build && node build/index.js --development",
+    "devNoClean": "npm run build && node build/index.js --development"
   },
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
   "license": "UNLICENSED",
