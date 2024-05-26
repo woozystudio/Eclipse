@@ -1,7 +1,6 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, PermissionFlagsBits } from "discord.js";
 import Eclipse from "../class/Eclipse";
 import Command from "../class/Command";
-import TestSubCommand from "../subCommands/SubCommand";
 
 export default class TestCommand extends Command {
     constructor(client: Eclipse) {
@@ -9,23 +8,20 @@ export default class TestCommand extends Command {
             name: "test",
             description: "test",
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
-            options: [
-                {
-                    name: new TestSubCommand(client).group,
-                    description: "test",
-                    type: ApplicationCommandOptionType.SubcommandGroup,
-                    options: [
-                        {
-                            name: new TestSubCommand(client).name,
-                            description: "test",
-                            type: ApplicationCommandOptionType.Subcommand,
-                        }
-                    ]
-                }
-            ],
+            options: [],
             development: true
         });
     }
 
-    async Execute(interaction: ChatInputCommandInteraction) {}
+    async Execute(interaction: ChatInputCommandInteraction) {
+        const button = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId("testing")
+            .setLabel("Button Interaction")
+            .setStyle(ButtonStyle.Secondary)
+        )
+
+        await interaction.reply({ components: [new ActionRowBuilder<ButtonBuilder>(button)] })
+    }
 }
