@@ -7,6 +7,7 @@ import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
 import 'colors';
+import VersionManagement from "../interfaces/VersionManagement";
 
 export default class Eclipse extends Client implements Bot
 {
@@ -17,6 +18,7 @@ export default class Eclipse extends Client implements Bot
     buttons: Collection<string, Button>;
     contextMenus: Collection<string, ContextMenu>
     development: boolean;
+    version: VersionManagement;
 
     constructor()
     {
@@ -30,6 +32,7 @@ export default class Eclipse extends Client implements Bot
         });
 
         this.config = require(`../../config/config.json`);
+        this.version = require(`../../config/versionManagement.json`)
         this.addListeners = new Listeners(this);
         this.commands = new Collection();
         this.subCommands = new Collection();
@@ -39,7 +42,7 @@ export default class Eclipse extends Client implements Bot
     }
     
     Init(): void {
-        console.log(`Starting the client in ${this.development ? "the canary version." : "production mode."}`.cyan)
+        console.log(`Starting the client in ${this.development ? "development" : "production"} mode.`.cyan)
         this.AddListeners();
 
         this.login(this.development ? this.config.canaryToken : this.config.token).catch((err) => console.error(err));
