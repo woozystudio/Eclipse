@@ -2,7 +2,7 @@
 node_modules/
 
 # Configuration
-config/config.json
+config/
 
 # Env
 environment/.env
