@@ -6,12 +6,14 @@ import Command from "./Command";
 import SubCommand from "./SubCommand";
 
 import 'colors';
+import Button from "./Button";
 export default class Eclipse extends Client implements Bot
 {
     addListeners: Listeners;
     config: Configuration;
     commands: Collection<string, Command>;
     subCommands: Collection<string, SubCommand>;
+    buttons: Collection<string, Button>;
     development: boolean;
 
     constructor()
@@ -29,6 +31,7 @@ export default class Eclipse extends Client implements Bot
         this.addListeners = new Listeners(this);
         this.commands = new Collection();
         this.subCommands = new Collection();
+        this.buttons = new Collection();
         this.development = (process.argv.slice(2).includes("--development"));
     }
     
@@ -43,5 +46,6 @@ export default class Eclipse extends Client implements Bot
         this.addListeners.createEventsListener();
         this.addListeners.createCommandsListener();
         this.addListeners.createSubCommandsListener();
+        this.addListeners.createButtonInteractions();
     }
 }
