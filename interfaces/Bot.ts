@@ -9,6 +9,6 @@ export default interface Bot {
     subCommands: Collection<string, SubCommand>;
     development: boolean;
 
-    Init(): void;
+    Login(): void;
     AddListeners(): void;
 }

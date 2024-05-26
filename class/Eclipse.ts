@@ -41,7 +41,7 @@ export default class Eclipse extends Client implements Bot
         this.development = (process.argv.slice(2).includes("--development"));
     }
     
-    Init(): void {
+    Login(): void {
         console.log(`Starting the client in ${this.development ? "development" : "production"} mode.`.cyan)
         this.AddListeners();
 
