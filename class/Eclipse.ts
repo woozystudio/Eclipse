@@ -4,9 +4,10 @@ import Configuration from "../interfaces/Configuration";
 import Listeners from "./Listeners";
 import Command from "./Command";
 import SubCommand from "./SubCommand";
-
-import 'colors';
 import Button from "./Button";
+import ContextMenu from "./ContextMenu";
+import 'colors';
+
 export default class Eclipse extends Client implements Bot
 {
     addListeners: Listeners;
@@ -14,6 +15,7 @@ export default class Eclipse extends Client implements Bot
     commands: Collection<string, Command>;
     subCommands: Collection<string, SubCommand>;
     buttons: Collection<string, Button>;
+    contextMenus: Collection<string, ContextMenu>
     development: boolean;
 
     constructor()
@@ -32,6 +34,7 @@ export default class Eclipse extends Client implements Bot
         this.commands = new Collection();
         this.subCommands = new Collection();
         this.buttons = new Collection();
+        this.contextMenus = new Collection();
         this.development = (process.argv.slice(2).includes("--development"));
     }
     
@@ -47,5 +50,6 @@ export default class Eclipse extends Client implements Bot
         this.addListeners.createCommandsListener();
         this.addListeners.createSubCommandsListener();
         this.addListeners.createButtonInteractions();
+        this.addListeners.createContextMenuCommandsInteractions();
     }
 }
