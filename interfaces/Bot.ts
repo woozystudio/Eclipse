@@ -5,4 +5,5 @@ export default interface Bot {
     config: Configuration;
 
     Init(): void;
+    AddListeners(): void;
 }
