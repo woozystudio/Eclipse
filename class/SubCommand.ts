@@ -5,15 +5,15 @@ import Eclipse from "./Eclipse";
 
 export default class SubCommand implements SubCommandListener {
     client: Eclipse;
+    command: string;
     name: string;
-    subCommandName: string;
-    subCommandGroupName: string;
+    group: string;
     
     constructor(client: Eclipse, on: SubCommandManager){
         this.client = client;
-        this.name = on.commandName;
-        this.subCommandName = on.subCommandName;
-        this.subCommandGroupName = on.subCommandGroupName;
+        this.command = on.command;
+        this.name = on.name;
+        this.group = on.group;
     }
 
     Execute(interaction: ChatInputCommandInteraction<CacheType>): void {
