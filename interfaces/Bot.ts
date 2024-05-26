@@ -7,6 +7,7 @@ export default interface Bot {
     config: Configuration;
     commands: Collection<string, Command>;
     subCommands: Collection<string, SubCommand>;
+    development: boolean;
 
     Init(): void;
     AddListeners(): void;
