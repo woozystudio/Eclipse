@@ -52,4 +52,24 @@ export default class Listeners implements Handler {
             
         });
     }
+
+    async createSubCommandsListener() {
+        const files = (await glob(`build/subCommands/**/*.js`)).map(filePath => path.resolve(filePath));
+
+        files.map(async (file: string) => {
+            const command: SubCommand = new(await import(file)).default(this.client);
+
+            if(!command.name && !command.command)
+                return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid name.`);
+
+            if(!command.group)
+                this.client.subCommands.set(command.command + "." + command.name, command as SubCommand);
+
+            else this.client.subCommands.set(command.command + "." + command.group + "." + command.name, command as SubCommand);
+
+            return delete require.cache[require.resolve(file)]
+
+            
+        });
+    }
 }
