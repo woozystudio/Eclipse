@@ -1,5 +1,5 @@
 export default interface SubCommandManager {
-    commandName: string;
-    subCommandName: string;
-    subCommandGroupName: string;
+    command: string;
+    name: string;
+    group: string;
 }

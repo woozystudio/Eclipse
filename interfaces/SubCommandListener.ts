@@ -3,9 +3,9 @@ import Eclipse from "../class/Eclipse";
 
 export default interface SubCommandManager {
     client: Eclipse;
+    command: string;
     name: string;
-    subCommandName: string;
-    subCommandGroupName: string;
+    group: string;
 
     Execute(interaction: ChatInputCommandInteraction): void;
 }
