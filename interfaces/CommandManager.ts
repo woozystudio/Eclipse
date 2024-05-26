@@ -3,4 +3,5 @@ export default interface CommandManager {
     description: string;
     options: object;
     userPermissions: bigint;
+    development: boolean;
 }
