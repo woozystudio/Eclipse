@@ -1,4 +1,3 @@
-
 export default interface Configuration {
     token: string;
     botId: string;
@@ -6,4 +5,5 @@ export default interface Configuration {
     canaryToken: string;
     canaryBotId: string;
     developers: string[];
+    versionLogging: string;
 }
