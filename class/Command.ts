@@ -2,11 +2,13 @@ import { ChatInputCommandInteraction, CacheType, AutocompleteInteraction } from 
 import CommandListener from "../interfaces/CommandListener";
 import Eclipse from "./Eclipse";
 import CommandManager from "../interfaces/CommandManager";
+import Category from "../enums/Category";
 
 export default class Command implements CommandListener {
     client: Eclipse;
     name: string;
     description: string;
+    category: Category;
     options: object;
     default_member_permissions: bigint;
     development: boolean;
@@ -15,6 +17,7 @@ export default class Command implements CommandListener {
         this.client = client;
         this.name = on.name;
         this.description = on.description;
+        this.category = on.category;
         this.options = on.options;
         this.default_member_permissions = on.userPermissions;
         this.development = on.development;
