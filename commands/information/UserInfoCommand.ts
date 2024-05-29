@@ -7,7 +7,7 @@ export default class UserInfo extends Command {
     constructor(client: Eclipse) {
         super(client, {
             name: "userinfo",
-            description: "Information about a user.",
+            description: "Displays information about a server user.",
             category: Category.Information,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             options: [
