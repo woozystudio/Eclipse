@@ -18,7 +18,7 @@ export default class ChannelInfo extends Command {
                     type: ApplicationCommandOptionType.Channel
                 }
             ],
-            development: true
+            development: false
         });
     }
 
