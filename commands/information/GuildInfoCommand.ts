@@ -23,12 +23,12 @@ export default class GuildInfo extends Command {
         .setThumbnail(interaction.guild?.iconURL({ size: 2048}) as string)
         .setColor(0x2B2D31)
         .addFields(
-            { name: 'Owner', value: `${owner?.user.username}`, inline: true },
-            { name: 'Members', value: `${interaction.guild?.memberCount}/500000`, inline: true },
-            { name: 'Boosts', value: `${interaction.guild?.premiumSubscriptionCount || "0"}`, inline: true },
-            { name: 'Roles', value: `${interaction.guild?.roles.cache.size}/250`, inline: true },
-            { name: 'Channels', value: `${interaction.guild?.channels.cache.filter(channel => channel.type !== ChannelType.GuildCategory).size}/500`, inline: true },
-            { name: 'Emojis', value: `${interaction.guild?.emojis.cache.size}/250`, inline: true },
+            { name: 'Owner', value: `\`\`\`${owner?.user.username}\`\`\``, inline: true },
+            { name: 'Members', value: `\`\`\`${interaction.guild?.memberCount}/500000\`\`\``, inline: true },
+            { name: 'Boosts', value: `\`\`\`${interaction.guild?.premiumSubscriptionCount || "0"}\`\`\``, inline: true },
+            { name: 'Roles', value: `\`\`\`${interaction.guild?.roles.cache.size}/250\`\`\``, inline: true },
+            { name: 'Channels', value: `\`\`\`${interaction.guild?.channels.cache.filter(channel => channel.type !== ChannelType.GuildCategory).size}/500\`\`\``, inline: true },
+            { name: 'Emojis', value: `\`\`\`${interaction.guild?.emojis.cache.size}/250\`\`\``, inline: true },
             { name: 'Date created', value: `<t:${Math.floor(interaction.guild?.createdTimestamp as number / 1000)}>`, inline: false },
         )
 

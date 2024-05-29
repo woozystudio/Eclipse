@@ -20,16 +20,16 @@ export default class ChannelsButtonGuildInfoCommand extends Button {
         .setTitle(`Channels (${guild.channels.cache.size})`)
         .setColor(0x2B2D31)
         .addFields(
-            { name: `Announcement Threads`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.AnnouncementThread).size}`, inline: true },
-            { name: `Announcements`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildAnnouncement).size}`, inline: true },
-            { name: `Categories`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildCategory).size}`, inline: true },
-            { name: `Forum`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildForum).size}`, inline: true },
-            { name: `Media`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildMedia).size}`, inline: true },
-            { name: `Stage`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildStageVoice).size}`, inline: true },
-            { name: `Text`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildText).size}`, inline: true },
-            { name: `Voice`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildVoice).size}`, inline: true },
-            { name: `Private Threads`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.PrivateThread).size}`, inline: true },
-            { name: `Public Threads`, value: `${guild.channels.cache.filter(channel => channel.type === ChannelType.PublicThread).size}`, inline: true },
+            { name: `Announcement Threads`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.AnnouncementThread).size}\`\`\``, inline: false },
+            { name: `Announcements`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildAnnouncement).size}\`\`\``, inline: true },
+            { name: `Categories`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildCategory).size}\`\`\``, inline: true },
+            { name: `Forum`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildForum).size}\`\`\``, inline: true },
+            { name: `Media`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildMedia).size}\`\`\``, inline: true },
+            { name: `Stage`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildStageVoice).size}\`\`\``, inline: true },
+            { name: `Text`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildText).size}\`\`\``, inline: true },
+            { name: `Voice`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.GuildVoice).size}\`\`\``, inline: true },
+            { name: `Private Threads`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.PrivateThread).size}\`\`\``, inline: true },
+            { name: `Public Threads`, value: `\`\`\`${guild.channels.cache.filter(channel => channel.type === ChannelType.PublicThread).size}\`\`\``, inline: true },
         )
 
         await interaction.reply({ embeds: [ChannelsEmbed], ephemeral: true });
