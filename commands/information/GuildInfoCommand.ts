@@ -11,7 +11,7 @@ export default class GuildInfo extends Command {
             category: Category.Information,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             options: [],
-            development: true
+            development: false
         });
     }
 
