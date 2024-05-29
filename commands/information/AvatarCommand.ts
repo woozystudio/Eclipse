@@ -18,7 +18,7 @@ export default class Avatar extends Command {
                     type: ApplicationCommandOptionType.User
                 }
             ],
-            development: true
+            development: false
         });
     }
 
