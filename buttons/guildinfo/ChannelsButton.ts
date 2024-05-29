@@ -1,7 +1,6 @@
-import { ButtonInteraction, CacheType, ChannelType, EmbedBuilder, Guild, PermissionFlagsBits } from "discord.js";
+import { ButtonInteraction, ChannelType, EmbedBuilder, Guild, PermissionFlagsBits } from "discord.js";
 import Button from "../../class/Button";
 import Eclipse from "../../class/Eclipse";
-import { channel } from "diagnostics_channel";
 
 export default class ChannelsButtonGuildInfoCommand extends Button {
     constructor(client: Eclipse) {
