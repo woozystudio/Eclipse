@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, Channel, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
+import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction, EmbedBuilder, ForumChannel, PermissionFlagsBits, TextChannel } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -25,7 +25,10 @@ export default class ChannelInfo extends Command {
     async Execute(interaction: ChatInputCommandInteraction) {
         const channel = interaction.options.getChannel('channel');
         const channels = await interaction.guild?.channels.fetch(channel?.id as string);
+        
         let type;
+        let topic = (channel as TextChannel).topic;
+
         switch (channel?.type) {
             case 0:
                 type = "Text Channel";
@@ -41,9 +44,11 @@ export default class ChannelInfo extends Command {
                 break;
             case 15:
                 type = "Forum Channel"
+                topic = "No support for forum channels"
                 break;
             case 16:
                 type = "Media Channel"
+                topic = "No support for forum channels"
                 break;
             case 12:
                 type = "Private Thread Channel"
@@ -59,7 +64,7 @@ export default class ChannelInfo extends Command {
         .addFields(
             { name: 'Name', value: `\`\`\`${channel?.name}\`\`\``, inline: true },
             { name: 'ID', value: `\`\`\`${channel?.id}\`\`\``, inline: true },
-            { name: 'Topic', value: `\`\`\`${(channel as TextChannel).topic || "No topic is set or unavailable" }\`\`\``, inline: false },
+            { name: 'Topic', value: `\`\`\`${topic}\`\`\``, inline: false },
             { name: 'Type', value: `\`\`\`${type}\`\`\``, inline: true },
             { name: 'Parent', value: `\`\`\`${channels?.parent?.name}\`\`\``, inline: true },
             { name: 'Date created', value: `<t:${Math.floor(channels?.createdTimestamp as number / 1000)}>`, inline: false },
