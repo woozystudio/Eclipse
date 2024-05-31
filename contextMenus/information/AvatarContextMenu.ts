@@ -1,4 +1,4 @@
-import { ApplicationCommandType, CacheType, ContextMenuCommandInteraction, EmbedBuilder, UserContextMenuCommandInteraction } from "discord.js";
+import { ApplicationCommandType, CacheType, ContextMenuCommandInteraction, EmbedBuilder, PermissionFlagsBits, UserContextMenuCommandInteraction } from "discord.js";
 import ContextMenu from "../../class/ContextMenu";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -8,6 +8,7 @@ export default class AvatarMenu extends ContextMenu {
         super(client, {
             name: "Avatar",
             type: ApplicationCommandType.User,
+            userPermissions: PermissionFlagsBits.UseApplicationCommands,
             category: Category.Information,
             development: false
         });

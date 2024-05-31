@@ -8,6 +8,7 @@ export default class ContextMenu implements ContextMenuListener {
     client: Eclipse;
     name: string;
     type: number;
+    userPermissions: bigint;
     category: Category;
     development: boolean;
 
@@ -15,6 +16,7 @@ export default class ContextMenu implements ContextMenuListener {
         this.client = client;
         this.name = on.name;
         this.type = on.type;
+        this.userPermissions = on.userPermissions;
         this.category = on.category;
         this.development = on.development;
     }
