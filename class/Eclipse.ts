@@ -7,7 +7,6 @@ import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
 import 'colors';
-import VersionManagement from "../interfaces/VersionManagement";
 
 export default class Eclipse extends Client implements Bot
 {
@@ -18,7 +17,7 @@ export default class Eclipse extends Client implements Bot
     buttons: Collection<string, Button>;
     contextMenus: Collection<string, ContextMenu>
     development: boolean;
-    version: VersionManagement;
+    version: any;
 
     constructor()
     {
@@ -32,7 +31,7 @@ export default class Eclipse extends Client implements Bot
         });
 
         this.config = require(`../../config/config.json`);
-        this.version = require(`../../config/versionManagement.json`)
+        this.version = require(`../../package.json`)
         this.addListeners = new Listeners(this);
         this.commands = new Collection();
         this.subCommands = new Collection();

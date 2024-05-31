@@ -15,6 +15,6 @@ export default class VersionLogging extends Event {
         const version = this.client.version;
         const channel = await this.client.channels.cache.get(this.client.config.versionLogging) as TextChannel;
 
-        channel.send({ content: `${this.client.development ? "Eclipse Canary" : "Eclipse"} ${this.client.development ? version.canaryStableVersion : version.stableVersion} has been restarted, this time running ${this.client.development ? version.canaryState : version.state} ${this.client.development ? version.canaryVersion : version.version}${version.channel ? ` on the **${this.client.development ? version.canaryChannel : version.channel}** channel.` : "."}` })
+        channel.send({ content: `${this.client.development ? "Eclipse Canary" : "Eclipse"} ${version.version} has been restarted, this time running Release ${version.version}.` })
     }
 }
