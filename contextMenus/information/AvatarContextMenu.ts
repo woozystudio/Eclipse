@@ -9,7 +9,7 @@ export default class AvatarMenu extends ContextMenu {
             name: "Avatar",
             type: ApplicationCommandType.User,
             category: Category.Information,
-            development: true
+            development: false
         });
     }
 
