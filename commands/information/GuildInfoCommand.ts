@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, codeBlock, time } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -23,13 +23,13 @@ export default class GuildInfo extends Command {
         .setThumbnail(interaction.guild?.iconURL({ size: 2048}) as string)
         .setColor(0x2B2D31)
         .addFields(
-            { name: 'Owner', value: `\`\`\`${owner?.user.username}\`\`\``, inline: true },
-            { name: 'Members', value: `\`\`\`${interaction.guild?.memberCount}/500000\`\`\``, inline: true },
-            { name: 'Boosts', value: `\`\`\`${interaction.guild?.premiumSubscriptionCount || "0"}\`\`\``, inline: true },
-            { name: 'Roles', value: `\`\`\`${interaction.guild?.roles.cache.size}/250\`\`\``, inline: true },
-            { name: 'Channels', value: `\`\`\`${interaction.guild?.channels.cache.filter(channel => channel.type !== ChannelType.GuildCategory).size}/500\`\`\``, inline: true },
-            { name: 'Emojis', value: `\`\`\`${interaction.guild?.emojis.cache.size}/250\`\`\``, inline: true },
-            { name: 'Date created', value: `<t:${Math.floor(interaction.guild?.createdTimestamp as number / 1000)}>`, inline: false },
+            { name: 'Owner', value: `${codeBlock(`${owner?.user.username}`)}`, inline: true },
+            { name: 'Members', value: `${codeBlock(`${interaction.guild?.memberCount}`)}`, inline: true },
+            { name: 'Boosts', value: `${codeBlock(`${interaction.guild?.premiumSubscriptionCount || "0"}`)}`, inline: true },
+            { name: 'Roles', value: `${codeBlock(`${interaction.guild?.roles.cache.size}/250`)}`, inline: true },
+            { name: 'Channels', value: `${codeBlock(`${interaction.guild?.channels.cache.filter(channel => channel.type !== ChannelType.GuildCategory).size}/500`)}`, inline: true },
+            { name: 'Emojis', value: `${codeBlock(`${interaction.guild?.emojis.cache.size}/250`)}`, inline: true },
+            { name: 'Date created', value: `${time(Math.floor(interaction.guild?.createdTimestamp as number / 1000))}`, inline: false },
         )
 
         const GuildInfoButtons = new ActionRowBuilder<ButtonBuilder>().addComponents(

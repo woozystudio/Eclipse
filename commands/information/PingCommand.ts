@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, codeBlock, inlineCode } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -19,8 +19,8 @@ export default class Ping extends Command {
         const PingEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
         .addFields(
-            { name: "`🎫` Bot Latency", value: `\`\`\`${Date.now() - interaction.createdTimestamp}\`\`\``, inline: true },
-            { name: "\`🌐\` API Latency", value: `\`\`\`${this.client.ws.ping}\`\`\``, inline: true }
+            { name: `${inlineCode("🎫")} Bot Latency`, value: `${codeBlock(`${Date.now() - interaction.createdTimestamp}`)}`, inline: true },
+            { name: `${inlineCode("🌐")} API Latency`, value: `${codeBlock(`${this.client.ws.ping}`)}`, inline: true }
         )
 
         await interaction.reply({ embeds: [PingEmbed] });

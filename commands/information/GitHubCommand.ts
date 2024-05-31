@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, User } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, User, bold } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -24,7 +24,7 @@ export default class GitHub extends Command {
         .setColor(0x2B2D31)
         .setTitle(`Open Source Information`)
         .setDescription(`
-            This **wonderful** bot is made so that anyone can use it, this bot is a product of a lot of dedication and love. It is for this reason that it is now an opensource bot! 
+            This ${bold("wonderful")} bot is made so that anyone can use it, this bot is a product of a lot of dedication and love. It is for this reason that it is now an opensource bot! 
             
             > If you have knowledge in the development of Discord bots, don't hesitate to collaborate in it! Go to the official Eclipse server for more information about the GitHub repository!
         `)

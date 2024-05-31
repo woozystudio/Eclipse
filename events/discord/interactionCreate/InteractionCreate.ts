@@ -1,4 +1,4 @@
-import { ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events } from "discord.js";
+import { ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events, inlineCode } from "discord.js";
 import Event from "../../../class/Event";
 import Command from "../../../class/Command";
 import Eclipse from "../../../class/Eclipse";
@@ -45,7 +45,7 @@ export default class InteractionCreate extends Event {
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this command.", ephemeral: true });
+            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this command.`, ephemeral: true });
 
             try {
                 const context = `${interaction.commandName}${interaction.commandType}`
@@ -64,7 +64,7 @@ export default class InteractionCreate extends Event {
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(button.default_member_permissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this button.", ephemeral: true });
+            if(!target?.permissions.has(button.default_member_permissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this button.`, ephemeral: true });
 
             try {
                 const buttonId = `${interaction.customId}`;

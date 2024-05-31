@@ -1,4 +1,4 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, User } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, User, time } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -29,7 +29,7 @@ export default class BotInfo extends Command {
             { name: 'User', value: `${bot}`, inline: true },
             { name: 'Credits', value: `Architecture & Development: woozystudio`, inline: false },
             { name: 'Version', value: `${this.client.version.version}`, inline: true },
-            { name: 'Date Created', value: `<t:${Math.floor(bot?.createdTimestamp / 1000)}>`, inline: true },
+            { name: 'Date Created', value: `${time(Math.floor(bot?.createdTimestamp / 1000))}`, inline: true },
         )
 
         await interaction.reply({ embeds: [BotInfoEmbed] });

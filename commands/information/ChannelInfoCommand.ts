@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel, codeBlock, time } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -62,12 +62,12 @@ export default class ChannelInfo extends Command {
         .setTitle("Channel Information")
         .setColor(0x2B2D31)
         .addFields(
-            { name: 'Name', value: `\`\`\`${channel?.name}\`\`\``, inline: true },
-            { name: 'ID', value: `\`\`\`${channel?.id}\`\`\``, inline: true },
-            { name: 'Topic', value: `\`\`\`${topic}\`\`\``, inline: false },
-            { name: 'Type', value: `\`\`\`${type}\`\`\``, inline: true },
-            { name: 'Parent', value: `\`\`\`${channels?.parent?.name}\`\`\``, inline: true },
-            { name: 'Date created', value: `<t:${Math.floor(channels?.createdTimestamp as number / 1000)}>`, inline: false },
+            { name: 'Name', value: `${codeBlock(`${channel?.name}`)}`, inline: true },
+            { name: 'ID', value: `${codeBlock(`${channel?.id}`)}`, inline: true },
+            { name: 'Topic', value: `${codeBlock(`${topic || "No topic is set or unavailable"}`)}`, inline: false },
+            { name: 'Type', value: `${codeBlock(`${type}`)}`, inline: true },
+            { name: 'Parent', value: `${codeBlock(`${channels?.parent?.name}`)}`, inline: true },
+            { name: 'Date created', value: `${time(Math.floor(channels?.createdTimestamp as number / 1000))}`, inline: false },
         )
 
         await interaction.reply({ embeds: [ChannelInfoEmbed] });
