@@ -24,7 +24,7 @@ export default class InteractionContextMenuCreate extends Event {
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this command." });
+            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this command.", ephemeral: true });
 
             try {
                 const context = `${interaction.commandName}${interaction.commandType}`
