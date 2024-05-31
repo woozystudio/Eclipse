@@ -14,7 +14,7 @@ export default class InteractionCreate extends Event {
         });
     }
 
-    async Execute(interaction: ChatInputCommandInteraction, contextMenuInteraction: ContextMenuCommandInteraction, buttonInteraction: ButtonInteraction) {
+    async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction) {
         if(interaction.isChatInputCommand()) {
             const command: Command = this.client.commands.get(interaction.commandName)!;
     
@@ -34,42 +34,42 @@ export default class InteractionCreate extends Event {
             }
         }
 
-        if (contextMenuInteraction.isContextMenuCommand()) {
-            const contextMenu: ContextMenu = this.client.contextMenus.get(contextMenuInteraction.commandName)!;
+        if (interaction.isContextMenuCommand()) {
+            const contextMenu: ContextMenu = this.client.contextMenus.get(interaction.commandName)!;
 
-            if(contextMenu.development && !this.client.config.developers.includes(contextMenuInteraction.user.id))
-                return contextMenuInteraction.reply({ content: `This command is only for developers!`, ephemeral: true });
+            if(contextMenu.development && !this.client.config.developers.includes(interaction.user.id))
+                return interaction.reply({ content: `This command is only for developers!`, ephemeral: true });
 
             //@ts-ignore
-            if (!contextMenu) return contextMenuInteraction.reply({ content: `outdated menu` }) && this.client.contextMenus.delete(contextMenuInteraction.commandName);
+            if (!contextMenu) return interaction.reply({ content: `outdated menu` }) && this.client.contextMenus.delete(interaction.commandName);
 
-            const target = await contextMenuInteraction.guild?.members.fetch(contextMenuInteraction.user.id);
+            const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(contextMenu.userPermissions)) return await contextMenuInteraction.reply({ content: "`❌` You don't have sufficient permissions to execute this command.", ephemeral: true });
+            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this command.", ephemeral: true });
 
             try {
-                const context = `${contextMenuInteraction.commandName}${contextMenuInteraction.commandType}`
+                const context = `${interaction.commandName}${interaction.commandType}`
 
-                return this.client.contextMenus.get(context)?.Execute(contextMenuInteraction) || contextMenu.Execute(contextMenuInteraction);
+                return this.client.contextMenus.get(context)?.Execute(interaction) || contextMenu.Execute(interaction);
             } catch (err) {
                 console.error(err);
             }
         }
 
-        if (buttonInteraction.isButton()) {
-            const button: Button = this.client.buttons.get(buttonInteraction.customId)!;
+        if (interaction.isButton()) {
+            const button: Button = this.client.buttons.get(interaction.customId)!;
 
             //@ts-ignore
-            if (!button) return buttonInteraction.reply({ content: `outdated button` }) && this.client.buttons.delete(buttonInteraction.customid);
+            if (!button) return interaction.reply({ content: `outdated button` }) && this.client.buttons.delete(interaction.customid);
 
-            const target = await buttonInteraction.guild?.members.fetch(buttonInteraction.user.id);
+            const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(button.default_member_permissions)) return await buttonInteraction.reply({ content: "`❌` You don't have sufficient permissions to execute this button.", ephemeral: true });
+            if(!target?.permissions.has(button.default_member_permissions)) return await interaction.reply({ content: "`❌` You don't have sufficient permissions to execute this button.", ephemeral: true });
 
             try {
-                const buttonId = `${buttonInteraction.customId}`;
+                const buttonId = `${interaction.customId}`;
     
-                this.client.buttons.get(buttonId)?.Execute(buttonInteraction) || button.Execute(buttonInteraction);
+                this.client.buttons.get(buttonId)?.Execute(interaction) || button.Execute(interaction);
             } catch (err) {
                 console.log(err);
             }
