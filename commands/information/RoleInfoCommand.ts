@@ -18,7 +18,7 @@ export default class RoleInfo extends Command {
                     type: ApplicationCommandOptionType.Role
                 }
             ],
-            development: true
+            development: false
         });
     }
 
