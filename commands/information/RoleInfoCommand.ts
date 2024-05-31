@@ -32,8 +32,8 @@ export default class RoleInfo extends Command {
         .setColor(0x2B2D31)
         .addFields(
             { name: 'Name', value: `\`\`\`${role?.name}\`\`\``, inline: true },
-            { name: 'ID', value: `\`\`\`${role?.id}\`\`\``, inline: true },
-            { name: 'Color', value: `\`\`\`${roles?.hexColor}\`\`\``, inline: false },
+            { name: 'Color', value: `\`\`\`${roles?.hexColor}\`\`\``, inline: true },
+            { name: 'ID', value: `\`\`\`${role?.id}\`\`\``, inline: false },
             { name: 'Position', value: `\`\`\`${role?.position}\`\`\``, inline: false },
             { name: 'Permissions', value: `${permissions?.join(' ')}`, inline: false },
             { name: 'Date created', value: `<t:${Math.floor(roles?.createdTimestamp as number / 1000)}>`, inline: false },
