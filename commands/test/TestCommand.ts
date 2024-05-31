@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { ChatInputCommandInteraction, PermissionFlagsBits } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";

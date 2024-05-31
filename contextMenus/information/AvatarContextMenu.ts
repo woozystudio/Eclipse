@@ -1,4 +1,4 @@
-import { ApplicationCommandType, CacheType, ContextMenuCommandInteraction, EmbedBuilder, PermissionFlagsBits, UserContextMenuCommandInteraction } from "discord.js";
+import { ApplicationCommandType, EmbedBuilder, PermissionFlagsBits, UserContextMenuCommandInteraction } from "discord.js";
 import ContextMenu from "../../class/ContextMenu";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";

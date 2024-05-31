@@ -1,4 +1,4 @@
-import { ButtonInteraction, CacheType, EmbedBuilder, Guild, PermissionFlagsBits } from "discord.js";
+import { ButtonInteraction, EmbedBuilder, Guild, PermissionFlagsBits } from "discord.js";
 import Button from "../../class/Button";
 import Eclipse from "../../class/Eclipse";
 

@@ -1,4 +1,4 @@
-import { ButtonInteraction, ChatInputCommandInteraction, Collection, ContextMenuCommandInteraction, Events } from "discord.js";
+import { ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events } from "discord.js";
 import Event from "../../../class/Event";
 import Command from "../../../class/Command";
 import Eclipse from "../../../class/Eclipse";
