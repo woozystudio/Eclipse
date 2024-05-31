@@ -14,6 +14,6 @@ export default class Ready extends Event {
 
     async Execute() {
         console.log(`Logged as ${this.client.user?.tag}`.green);
-        this.client.user?.setPresence({ activities: [{ name: `${this.client.development ? "Canary v0.0.2" : "Use /help for help!"}`, type: ActivityType.Custom }], status: PresenceUpdateStatus.Idle })
+        this.client.user?.setPresence({ activities: [{ name: `${this.client.development ? "Eclipse Canary" : "Use /help for help!"}`, type: ActivityType.Custom }], status: PresenceUpdateStatus.Idle })
     }
 }
