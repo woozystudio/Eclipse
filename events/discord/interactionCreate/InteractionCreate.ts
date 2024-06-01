@@ -22,7 +22,7 @@ export default class InteractionCreate extends Event {
             if(!command) return interaction.reply({ content: "outdated command", ephemeral: true }) && this.client.commands.delete(interaction.commandName);
     
             if(command.development && !this.client.config.developers.includes(interaction.user.id))
-                return interaction.reply({ content: `This command is only for developers!`, ephemeral: true });
+                return interaction.reply({ content: `${inlineCode("❌")} This command is only for developers!`, ephemeral: true });
     
             try {
                 const subCommandGroup = interaction.options.getSubcommandGroup(false);
@@ -38,7 +38,7 @@ export default class InteractionCreate extends Event {
             const contextMenu: ContextMenu = this.client.contextMenus.get(interaction.commandName)!;
 
             if(contextMenu.development && !this.client.config.developers.includes(interaction.user.id))
-                return interaction.reply({ content: `This command is only for developers!`, ephemeral: true });
+                return interaction.reply({ content: `${inlineCode("❌")} This command is only for developers!`, ephemeral: true });
 
             //@ts-ignore
             if (!contextMenu) return interaction.reply({ content: `outdated menu` }) && this.client.contextMenus.delete(interaction.commandName);
