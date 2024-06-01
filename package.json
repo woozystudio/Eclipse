@@ -1,6 +1,6 @@
 {
   "name": "@eclipse/eclipse",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "",
   "scripts": {
     "clean": "del /s /q build",
