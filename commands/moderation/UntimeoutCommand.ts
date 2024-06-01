@@ -26,7 +26,7 @@ export default class UnTimeout extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: true
+            development: false
         });
     }
 
