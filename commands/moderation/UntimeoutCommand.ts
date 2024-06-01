@@ -41,16 +41,16 @@ export default class UnTimeout extends Command {
         const targetPermissions = member.permissions;
         const hasHigherPermissions = targetPermissions.has(PermissionFlagsBits.Administrator) || (botPermissions?.has(PermissionFlagsBits.Administrator) && targetPermissions.has(botPermissions.bitfield));
 
-        if (member?.isCommunicationDisabled() === false) return await interaction.reply({ embeds: [new ErrorEmbed(`The user ${target} is not in timeout.`)], ephemeral: false });
-        if (!interactionMember?.permissions.has(new UnTimeout(this.client).default_member_permissions)) return await interaction.reply({ embeds: [new ErrorEmbed("You do not have permissions to execute this command.")], ephemeral: false });
-        if (!member) return await interaction.reply({ embeds: [new ErrorEmbed("The user mentioned is no longer within the server.")], ephemeral: false });
-        if (interaction.user.id === member.id) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot execute the untimeout action on yourself.")], ephemeral: false });
-        if (member.permissions.has(PermissionFlagsBits.Administrator)) return await interaction.reply({ embeds: [new ErrorEmbed("I cannot untimeout a user with administrator permissions.")], ephemeral: false });
-        if (targetHighestRole.comparePositionTo(botHighestRole) >= 0) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they has a role superior or equal to mine.")], ephemeral: false });
-        if (hasHigherPermissions) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they have higher or equal permissions to mine.")], ephemeral: false });
+        if (member?.isCommunicationDisabled() === false) return await interaction.reply({ embeds: [new ErrorEmbed(`The user ${target} is not in timeout.`)], ephemeral: true });
+        if (!interactionMember?.permissions.has(new UnTimeout(this.client).default_member_permissions)) return await interaction.reply({ embeds: [new ErrorEmbed("You do not have permissions to execute this command.")], ephemeral: true });
+        if (!member) return await interaction.reply({ embeds: [new ErrorEmbed("The user mentioned is no longer within the server.")], ephemeral: true });
+        if (interaction.user.id === member.id) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot execute the untimeout action on yourself.")], ephemeral: true });
+        if (member.permissions.has(PermissionFlagsBits.Administrator)) return await interaction.reply({ embeds: [new ErrorEmbed("I cannot untimeout a user with administrator permissions.")], ephemeral: true });
+        if (targetHighestRole.comparePositionTo(botHighestRole) >= 0) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they has a role superior or equal to mine.")], ephemeral: true });
+        if (hasHigherPermissions) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they have higher or equal permissions to mine.")], ephemeral: true });
 
         member.timeout(null, reason);
 
-        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been untimeout successfully.\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: false })
+        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been untimeout successfully.\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: true })
     }
 }
