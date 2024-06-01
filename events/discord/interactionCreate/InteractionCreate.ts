@@ -45,7 +45,7 @@ export default class InteractionCreate extends Event {
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(contextMenu.userPermissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this command.`, ephemeral: true });
+            if(!target?.permissions.has(contextMenu.default_member_permissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this command.`, ephemeral: true });
 
             try {
                 const context = `${interaction.commandName}${interaction.commandType}`
