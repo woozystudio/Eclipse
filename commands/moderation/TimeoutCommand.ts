@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, Role, TextChannel, User, bold, codeBlock, heading, inlineCode, quote, time } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, Role, User, bold, codeBlock, heading, quote, time } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -62,7 +62,6 @@ export default class Timeout extends Command {
         const reason: any = interaction.options.getString('reason') || "No reason provided." as string;
         const member = await interaction.guild?.members.fetch(target.id) as GuildMember;
         const interactionMember = await interaction.guild?.members.fetch(interaction.user.id) as GuildMember;
-        const channel = await interaction.channel as TextChannel;
         const botHighestRole = interaction.guild?.members.me?.roles.highest as Role;
         const targetHighestRole = member.roles.highest;
         const botPermissions = interaction.guild?.members.me?.permissions;
