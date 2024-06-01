@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, Role, TextChannel, User, codeBlock, heading, inlineCode } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, GuildMember, PermissionFlagsBits, Role, TextChannel, User, bold, codeBlock, heading, inlineCode, quote, time } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -86,18 +86,18 @@ export default class Timeout extends Command {
         .setColor(0x2B2D31)
         .setAuthor({ name: `${interaction.user.tag} (${interaction.user.id})`, iconURL: interaction.user.displayAvatarURL() })
         .setDescription(`
-            You have been timeout from **${interaction.guild?.name}**
+            You have been timeout from ${bold(`${interaction.guild?.name}`)}
 
-            **Reason:**
-            > ${reason}
+            ${bold('Reason:')}
+            ${quote(reason)}
 
-            **Time:**
-            > <t:${timeoutExpiresAt}:R>
+            ${bold('Time:')}
+            ${quote(time(timeoutExpiresAt, "R"))}
         
             You were timeout by ${interaction.user.tag}.
         `)
 
         await member.send({ embeds: [UserDirectMessagesEmbed] }).catch(err => { return; });
-        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been timeout successfully.\nThe timeout will be cancelled <t:${timeoutExpiresAt}:R>\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: false })
+        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been timeout successfully.\nThe timeout will be cancelled ${time(timeoutExpiresAt, "R")}\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: false })
     }
 }
