@@ -52,7 +52,7 @@ export default class Timeout extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: true
+            development: false
         });
     }
 
