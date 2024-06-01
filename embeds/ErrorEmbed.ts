@@ -5,7 +5,7 @@ export default class ErrorEmbed extends EmbedWrapper {
     constructor(description: string) {
         super();
         this.setDescription(`${inlineCode("❌")} ${description}`);
-        this.setColor("Red");
+        this.setColor(0xF04A47);
     }
 
     /**
