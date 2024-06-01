@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, CacheType } from "discord.js";
-import SubCommandListener from "../interfaces/SubCommandListener";
-import SubCommandManager from "../interfaces/SubCommandManager";
+import SubCommandListener from "../types/SubCommandListener";
+import SubCommandManager from "../types/SubCommandManager";
 import Eclipse from "./Eclipse";
 
 export default class SubCommand implements SubCommandListener {

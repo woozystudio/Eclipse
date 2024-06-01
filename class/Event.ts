@@ -1,7 +1,7 @@
 import { Events } from "discord.js";
 import Eclipse from "../class/Eclipse";
-import EventManager from "../interfaces/EventManager";
-import EventListener from "../interfaces/EventListener";
+import EventManager from "../types/EventManager";
+import EventListener from "../types/EventListener";
 
 export default class Event implements EventListener {
     client: Eclipse;

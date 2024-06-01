@@ -1,4 +1,4 @@
-import Handler from "../interfaces/Handler";
+import Handler from "../types/Handler";
 import path from "path";
 import { glob } from "glob";
 import Eclipse from "./Eclipse";

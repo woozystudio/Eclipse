@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, CacheType, AutocompleteInteraction } from "discord.js";
-import CommandListener from "../interfaces/CommandListener";
+import CommandListener from "../types/CommandListener";
 import Eclipse from "./Eclipse";
-import CommandManager from "../interfaces/CommandManager";
+import CommandManager from "../types/CommandManager";
 import Category from "../enums/Category";
 
 export default class Command implements CommandListener {

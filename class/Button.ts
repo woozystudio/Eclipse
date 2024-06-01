@@ -1,6 +1,6 @@
 import { CacheType, ButtonInteraction } from "discord.js";
-import ButtonListener from "../interfaces/ButtonListener";
-import ButtonManager from "../interfaces/ButtonManager";
+import ButtonListener from "../types/ButtonListener";
+import ButtonManager from "../types/ButtonManager";
 import Eclipse from "./Eclipse";
 
 export default class Button implements ButtonListener {

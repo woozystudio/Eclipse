@@ -1,6 +1,6 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
-import Bot from "../interfaces/Bot";
-import Configuration from "../interfaces/Configuration";
+import Bot from "../types/Bot";
+import Configuration from "../types/Configuration";
 import Listeners from "./Listeners";
 import Command from "./Command";
 import SubCommand from "./SubCommand";

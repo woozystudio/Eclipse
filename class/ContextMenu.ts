@@ -1,7 +1,7 @@
 import { ContextMenuCommandInteraction, CacheType } from "discord.js";
-import ContextMenuListener from "../interfaces/ContextMenuListener";
+import ContextMenuListener from "../types/ContextMenuListener";
 import Eclipse from "./Eclipse";
-import ContextMenuManager from "../interfaces/ContextMenuManager";
+import ContextMenuManager from "../types/ContextMenuManager";
 import Category from "../enums/Category";
 
 export default class ContextMenu implements ContextMenuListener {
