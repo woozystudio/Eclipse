@@ -6,4 +6,5 @@ export default interface Configuration {
     canaryBotId: string;
     developers: string[];
     versionLogging: string;
+    errorLogging: string;
 }
