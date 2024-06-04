@@ -35,7 +35,7 @@ export default class Avatar extends Command {
                     ]
                 }
             ],
-            development: true
+            development: false
         });
     }
 
