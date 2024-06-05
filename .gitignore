@@ -9,3 +9,6 @@ environment/.env
 
 # Build
 build/
+
+# Tests
+commands/test/*
