@@ -6,6 +6,7 @@ import Command from "./Command";
 import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
+import { connect } from "mongoose";
 import 'colors';
 
 export default class Eclipse extends Client implements Bot
@@ -45,6 +46,10 @@ export default class Eclipse extends Client implements Bot
         this.AddListeners();
 
         this.login(this.development ? this.config.canaryToken : this.config.token).catch((err) => console.error(err));
+
+        connect(this.config.mongoose)
+            .then(() => console.log("☁ Connected to MongoDB database successfully.".blue))
+            .catch((err) => console.error(err));
     }
 
     AddListeners(): void {
