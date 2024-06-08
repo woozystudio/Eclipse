@@ -24,6 +24,19 @@ export default class Configuration extends Command {
                             channel_types: [ChannelType.GuildText]
                         }
                     ]
+                },
+                {
+                    name: "join-roles",
+                    description: "Configure the automatic join roles plugin",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    options: [
+                        {
+                            name: "role",
+                            description: "Select the role you want to automate.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Role,
+                        }
+                    ]
                 }
             ],
             development: false
