@@ -23,6 +23,12 @@ export default class Report extends Command {
                     description: "Write the reason for the report.",
                     required: true,
                     type: ApplicationCommandOptionType.String
+                },
+                {
+                    name: "attachment",
+                    description: "Attach evidence or an image for reporting purposes.",
+                    required: true,
+                    type: ApplicationCommandOptionType.Attachment
                 }
             ],
             development: false
@@ -32,6 +38,7 @@ export default class Report extends Command {
     async Execute(interaction: ChatInputCommandInteraction) {
         const target = interaction.options.getUser('target');
         const reason = interaction.options.getString('reason');
+        const attachment = interaction.options.getAttachment('attachment');
 
         const ReportEmbed = new EmbedBuilder()
         .setAuthor({ iconURL: interaction.user.displayAvatarURL(), name: `${interaction.user.username} (${interaction.user.id})` })
@@ -40,7 +47,9 @@ export default class Report extends Command {
             ${bold('Member:')} ${inlineCode(`${target?.username}`)} (${target?.id})
             ${bold('Action:')} Report
             ${bold('Reason:')} ${reason}
+            ${bold('Attachment:')}
         `)
+        .setImage(`${attachment?.url}`)
         .setTimestamp()
 
         const data = await ReportsConfig.findOne({ GuildID: interaction.guild?.id });
