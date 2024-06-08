@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, User, bold, inlineCode } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, bold, inlineCode } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -24,35 +24,33 @@ export default class Help extends Command {
     }
 
     async Execute(interaction: ChatInputCommandInteraction) {        
-        const commandName = interaction.options.getString('command');
+        const command = interaction.options.getString('command');
         const commands = this.client.commands;
-        
-        if (commandName) {
-            const command = commands.find(cmd => cmd.name === commandName);
 
-            if (!command) {
-                await interaction.reply({ content: `${inlineCode('❌')} No command found with the name ${inlineCode(commandName)}`, ephemeral: true });
+        if(command) {
+            const findCommand = commands.find(cmd => cmd.name === command);
+
+            if (!findCommand) {
+                await interaction.reply({ content: `${inlineCode('❌')} No command found with the name ${inlineCode(command)}`, ephemeral: true });
                 return;
             }
 
-            const options = (command.options as CommandOption[]).map((option: CommandOption) => {
-                return `${inlineCode(`<${option.name}>`)}`;
-            }).join(' ');
+            const options = (findCommand.options as CommandOption[]).map((option: CommandOption) => { return `${inlineCode(`<${option.name}>`)}` }).join(' ');
 
-            const embed = new EmbedBuilder()
+            const HelpWithCommand = new EmbedBuilder()
             .setAuthor({ iconURL: this.client.user?.displayAvatarURL(), name: `${this.client.user?.username} ${this.client.version.version}` })
-            .setTitle(`Command information: ${command.name}`)
-            .setDescription(`
-                ${bold('Description:')}
-                ${command.description}
-            `)
+            .setTitle(`Command information: ${command}`)
             .setColor(0x2B2D31)
             .addFields(
-                { name: 'Usage', value: `${inlineCode(`/${command.name}`)} ${options}` },
-            );
-                
-            await interaction.reply({ embeds: [embed], ephemeral: false });
+                { name: 'Description', value: `${findCommand.description}` },
+                { name: 'Usage', value: `${inlineCode(`/${findCommand.name}`)} ${options}` }
+            )
+            .setFooter({ text: `Bot developed by: woozystudio` })
+
+            await interaction.reply({ embeds: [HelpWithCommand], ephemeral: true })
+
         } else {
+
             const infoCommands = this.client.commands.filter(cmd => cmd.category === Category.Information);
             const modCommands = this.client.commands.filter(cmd => cmd.category === Category.Moderation);
 
@@ -60,15 +58,12 @@ export default class Help extends Command {
             .setAuthor({ iconURL: this.client.user?.displayAvatarURL(), name: `${this.client.user?.username} ${this.client.version.version}` })
             .setTitle(`Eclipse Help Menu`)
             .setColor(0x2B2D31)
-            .setDescription(`
-                ${bold('Slash Commands:')} ${inlineCode('/')}
-                Transform your discord server to a place full of creativity and professionalism with unique plugins!
-                These are the commands you can use:
-            `)
             .addFields(
+                { name: `Slash Commands: ${inlineCode('/')}`, value: `Transform your discord server to a place full of creativity and professionalism with unique plugins! \nThese are the commands you can use:` },
                 { name: 'Information Commands', value: `${infoCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
                 { name: 'Moderation Commands', value: `${modCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
             )
+            .setFooter({ text: `Bot developed by: woozystudio` })
     
             await interaction.reply({ embeds: [HelpCommand] });
         }
