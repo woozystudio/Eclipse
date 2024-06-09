@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Role, TextChannel, inlineCode } from "discord.js";
+import { ActionRowBuilder, ChatInputCommandInteraction, EmbedBuilder, RoleSelectMenuBuilder, inlineCode } from "discord.js";
 import SubCommand from "../../class/SubCommand";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
@@ -15,14 +15,22 @@ export default class JoinRoles extends SubCommand {
     }
 
     async Execute(interaction: ChatInputCommandInteraction) {
-        const role1 = interaction.options.getRole('role-1') as Role;
-        const role2 = interaction.options.getRole('role-2') as Role;
-        const role3 = interaction.options.getRole('role-3') as Role;
-        const role4 = interaction.options.getRole('role-4') as Role;
-        const role5 = interaction.options.getRole('role-5') as Role;
-        
-        await JoinRolesConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { RoleID: [role1.id, role2.id, role3.id, role4.id, role5.id], }, { new: true, upsert: true });
+        const JoinRolesEmbed = new EmbedBuilder()
+            .setColor("Yellow")
+            .setDescription(`
+            ${inlineCode(`❓`)} Select the roles that will be automatically granted to all users that log in to the server.
 
-        await interaction.reply({ content: `${inlineCode('✅')} The join-roles plugin has been successfully configured.` });
+            ${inlineCode(`💡`)} You can change this anytime using the ${inlineCode(`/config join-roles`)} command.
+        `)
+
+        const RolesSelectMenu = new ActionRowBuilder<RoleSelectMenuBuilder>().addComponents(
+            new RoleSelectMenuBuilder()
+            .setCustomId('joinroles-config-menu')
+            .setPlaceholder('Select one or more server roles')
+            .setMaxValues(25)
+            .setMinValues(1)
+        )
+
+        await interaction.reply({ embeds: [JoinRolesEmbed], components: [RolesSelectMenu], ephemeral: true });
     }
 }
