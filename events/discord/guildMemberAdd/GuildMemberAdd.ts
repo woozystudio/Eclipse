@@ -16,7 +16,9 @@ export default class GuildMemberAdd extends Event {
         const data = await JoinRolesConfig.findOne({ GuildID: member.guild?.id });
         if(!data) return;
         
-        const role = member.guild.roles.cache.get(`${data.RoleID}`) as Role;
-        await member.roles.add(role);
+        data.RoleID.forEach(async role => {
+            const roles = member.guild.roles.cache.get(`${role}`) as Role;
+            await member.roles.add(roles);
+        });
     }
 }
