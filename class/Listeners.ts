@@ -7,6 +7,7 @@ import Command from "./Command";
 import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
+import SelectMenu from "./SelectMenu";
 
 export default class Listeners implements Handler {
     client: Eclipse;
@@ -81,6 +82,21 @@ export default class Listeners implements Handler {
                 return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid id.`);
 
             this.client.buttons.set(button.custom_id, button as Button);
+
+            return delete require.cache[require.resolve(file)]
+        });
+    }
+    
+    async createSelectMenuInteractions() {
+        const files = (await glob(`build/selectMenus/**/*.js`)).map(filePath => path.resolve(filePath));
+
+        files.map(async (file: string) => {
+            const selectMenu: SelectMenu = new(await import(file)).default(this.client);
+
+            if(!selectMenu.custom_id)
+                return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid id.`);
+
+            this.client.selectMenus.set(selectMenu.custom_id, selectMenu as SelectMenu);
 
             return delete require.cache[require.resolve(file)]
         });

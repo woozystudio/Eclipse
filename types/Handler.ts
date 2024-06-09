@@ -3,5 +3,6 @@ export default interface Handler {
     createCommandsListener(): void;
     createSubCommandsListener(): void;
     createButtonInteractions(): void;
+    createSelectMenuInteractions(): void;
     createContextMenuCommandsInteractions(): void;
 }
