@@ -28,39 +28,7 @@ export default class Configuration extends Command {
                 {
                     name: "join-roles",
                     description: "Configure the automatic join roles plugin",
-                    type: ApplicationCommandOptionType.Subcommand,
-                    options: [
-                        {
-                            name: "role-1",
-                            description: "Select the role you want to automate.",
-                            required: true,
-                            type: ApplicationCommandOptionType.Role,
-                        },
-                        {
-                            name: "role-2",
-                            description: "Select the role you want to automate.",
-                            required: false,
-                            type: ApplicationCommandOptionType.Role,
-                        },
-                        {
-                            name: "role-3",
-                            description: "Select the role you want to automate.",
-                            required: false,
-                            type: ApplicationCommandOptionType.Role,
-                        },
-                        {
-                            name: "role-4",
-                            description: "Select the role you want to automate.",
-                            required: false,
-                            type: ApplicationCommandOptionType.Role,
-                        },
-                        {
-                            name: "role-5",
-                            description: "Select the role you want to automate.",
-                            required: false,
-                            type: ApplicationCommandOptionType.Role,
-                        }
-                    ]
+                    type: ApplicationCommandOptionType.Subcommand
                 }
             ],
             development: false
