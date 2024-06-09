@@ -1,9 +1,10 @@
-import { ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events, inlineCode } from "discord.js";
+import { AnySelectMenuInteraction, ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events, inlineCode } from "discord.js";
 import Event from "../../../class/Event";
 import Command from "../../../class/Command";
 import Eclipse from "../../../class/Eclipse";
 import ContextMenu from "../../../class/ContextMenu";
 import Button from "../../../class/Button";
+import SelectMenu from "../../../class/SelectMenu";
 
 export default class InteractionCreate extends Event {
     constructor(client: Eclipse) {
@@ -14,7 +15,7 @@ export default class InteractionCreate extends Event {
         });
     }
 
-    async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction) {
+    async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction | AnySelectMenuInteraction) {
         if(interaction.isChatInputCommand()) {
             const command: Command = this.client.commands.get(interaction.commandName)!;
     
@@ -70,6 +71,25 @@ export default class InteractionCreate extends Event {
                 const buttonId = `${interaction.customId}`;
     
                 this.client.buttons.get(buttonId)?.Execute(interaction) || button.Execute(interaction);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        if (interaction.isAnySelectMenu()) {
+            const selectMenu: SelectMenu = this.client.selectMenus.get(interaction.customId)!;
+
+            //@ts-ignore
+            if (!selectMenu) return interaction.reply({ content: `outdated select menu` }) && this.client.selectMenus.delete(interaction.customid);
+
+            const target = await interaction.guild?.members.fetch(interaction.user.id);
+
+            if(!target?.permissions.has(selectMenu.default_member_permissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this select menu.`, ephemeral: true });
+
+            try {
+                const selectMenuId = `${interaction.customId}`;
+    
+                this.client.selectMenus.get(selectMenuId)?.Execute(interaction) || selectMenu.Execute(interaction);
             } catch (err) {
                 console.log(err);
             }
