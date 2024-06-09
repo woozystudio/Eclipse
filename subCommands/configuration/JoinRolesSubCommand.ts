@@ -26,24 +26,3 @@ export default class JoinRoles extends SubCommand {
         await interaction.reply({ content: `${inlineCode('✅')} The join-roles plugin has been successfully configured.` });
     }
 }
-
-/**
-        const role1 = interaction.options.getRole('role1') as Role;
-        const role2 = interaction.options.getRole('role2') as Role;
-        const role3 = interaction.options.getRole('role3') as Role;
-        const role4 = interaction.options.getRole('role4') as Role;
-        const role5 = interaction.options.getRole('role5') as Role;
-        
-        const roles = [role1, role2, role3, role4, role5].filter(role => role !== null) as Role[];
-        
-        if (roles.length === 0) {
-            await interaction.reply({ content: `${inlineCode('❌')} No valid roles provided.` });
-            return;
-        }
-            
-        const roleIDs = roles.map(role => role.id);
-            
-        await JoinRolesConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { RoleID: [roleIDs], }, { new: true, upsert: true });
-
-        await interaction.reply({ content: `${inlineCode('✅')} The join-roles plugin has been successfully configured.` });
-*/
