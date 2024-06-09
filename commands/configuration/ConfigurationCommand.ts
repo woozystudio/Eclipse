@@ -39,31 +39,31 @@ export default class Configuration extends Command {
                         {
                             name: "role-2",
                             description: "Select the role you want to automate.",
-                            required: true,
+                            required: false,
                             type: ApplicationCommandOptionType.Role,
                         },
                         {
                             name: "role-3",
                             description: "Select the role you want to automate.",
-                            required: true,
+                            required: false,
                             type: ApplicationCommandOptionType.Role,
                         },
                         {
                             name: "role-4",
                             description: "Select the role you want to automate.",
-                            required: true,
+                            required: false,
                             type: ApplicationCommandOptionType.Role,
                         },
                         {
                             name: "role-5",
                             description: "Select the role you want to automate.",
-                            required: true,
+                            required: false,
                             type: ApplicationCommandOptionType.Role,
                         }
                     ]
                 }
             ],
-            development: true
+            development: false
         });
     }
 
