@@ -29,6 +29,27 @@ export default class Configuration extends Command {
                     name: "join-roles",
                     description: "Configure the automatic join roles plugin",
                     type: ApplicationCommandOptionType.Subcommand
+                },
+                {
+                    name: "join-to-create",
+                    description: "Configure the automatic join to create plugin",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    options: [
+                        {
+                            name: "channel",
+                            description: "Select the channel that will function as the channel for creating rooms.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Channel,
+                            channel_types: [ChannelType.GuildVoice]
+                        },
+                        {
+                            name: "category",
+                            description: "Select the category where the channels will be created.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Channel,
+                            channel_types: [ChannelType.GuildCategory]
+                        }
+                    ]
                 }
             ],
             development: false
