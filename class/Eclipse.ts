@@ -29,7 +29,8 @@ export default class Eclipse extends Client implements Bot
                 GatewayIntentBits.GuildMembers,
                 GatewayIntentBits.GuildMessages,
                 GatewayIntentBits.Guilds,
-                GatewayIntentBits.MessageContent
+                GatewayIntentBits.MessageContent,
+                GatewayIntentBits.GuildVoiceStates
             ] 
         });
 
