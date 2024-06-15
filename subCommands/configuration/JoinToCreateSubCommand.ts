@@ -20,6 +20,6 @@ export default class JoinToCreate extends SubCommand {
         
         await JoinToCreateConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { ChannelID: channel.id, ParentID: category.id }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${inlineCode('✅')} The join to create plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${inlineCode('✔️')} The join to create plugin has been successfully configured.`, ephemeral: true });
     }
 }
