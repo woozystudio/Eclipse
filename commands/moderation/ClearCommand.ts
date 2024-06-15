@@ -50,7 +50,6 @@ export default class Clear extends Command {
                     i++;
                 }
             });
-            console.log(i)
 
             await channel.bulkDelete(filtered, true).then(messages => {
                 interaction.reply({ embeds: [new SuccessEmbed(`Successfully deleted ${bold(`${messages.size}`)} messages from ${target}.`)], ephemeral: false });
