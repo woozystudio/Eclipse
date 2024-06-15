@@ -19,6 +19,6 @@ export default class Reports extends SubCommand {
         
         await ReportsConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { ChannelID: channel.id, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${inlineCode('✅')} The reporting plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${inlineCode('✔️')} The reporting plugin has been successfully configured.`, ephemeral: true });
     }
 }
