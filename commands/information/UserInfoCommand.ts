@@ -39,6 +39,6 @@ export default class UserInfo extends Command {
             { name: 'Permissions', value: `${permissions?.join(' ')}` },
         )
 
-        await interaction.reply({ embeds: [UserInfoEmbed] });
+        await interaction.reply({ embeds: [UserInfoEmbed], ephemeral: true });
     }
 }

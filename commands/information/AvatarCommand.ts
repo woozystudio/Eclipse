@@ -83,6 +83,6 @@ export default class Avatar extends Command {
         }
 
 
-        await interaction.reply({ embeds: [AvatarEmbed] });
+        await interaction.reply({ embeds: [AvatarEmbed], ephemeral: true });
     }
 }

@@ -37,6 +37,6 @@ export default class GitHub extends Command {
             .setURL("https://github.com/woozystudio/Eclipse")
         )
 
-        await interaction.reply({ embeds: [GitHubEmbed], components: [Buttons] });
+        await interaction.reply({ embeds: [GitHubEmbed], components: [Buttons], ephemeral: true });
     }
 }

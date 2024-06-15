@@ -65,7 +65,7 @@ export default class Help extends Command {
             )
             .setFooter({ text: `Bot developed by: woozystudio` })
     
-            await interaction.reply({ embeds: [HelpCommand] });
+            await interaction.reply({ embeds: [HelpCommand], ephemeral: true });
         }
     }
 }

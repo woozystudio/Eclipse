@@ -32,6 +32,6 @@ export default class BotInfo extends Command {
             { name: 'Date Created', value: `${time(Math.floor(bot?.createdTimestamp / 1000))}`, inline: true },
         )
 
-        await interaction.reply({ embeds: [BotInfoEmbed] });
+        await interaction.reply({ embeds: [BotInfoEmbed], ephemeral: true });
     }
 }

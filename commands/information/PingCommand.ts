@@ -23,6 +23,6 @@ export default class Ping extends Command {
             { name: `${inlineCode("🌐")} API Latency`, value: `${codeBlock(`${this.client.ws.ping}`)}`, inline: true }
         )
 
-        await interaction.reply({ embeds: [PingEmbed] });
+        await interaction.reply({ embeds: [PingEmbed], ephemeral: true });
     }
 }

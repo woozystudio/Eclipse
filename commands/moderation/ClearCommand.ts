@@ -33,7 +33,7 @@ export default class Clear extends Command {
         const channel = interaction.channel as TextChannel;
 
         await channel.bulkDelete(amount, true).then(messages => {
-            interaction.reply({ embeds: [new SuccessEmbed(`Successfully deleted ${bold(`${messages.size}`)} messages from the channel.`)], ephemeral: false });
+            interaction.reply({ embeds: [new SuccessEmbed(`Successfully deleted ${bold(`${messages.size}`)} messages from the channel.`)], ephemeral: true });
         });
 
         setTimeout(async () => {

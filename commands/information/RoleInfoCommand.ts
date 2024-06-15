@@ -39,6 +39,6 @@ export default class RoleInfo extends Command {
             { name: 'Date created', value: `${time(Math.floor(roles?.createdTimestamp as number / 1000))}`, inline: false },
         )
 
-        await interaction.reply({ embeds: [RoleInfoEmbed] });
+        await interaction.reply({ embeds: [RoleInfoEmbed], ephemeral: true });
     }
 }

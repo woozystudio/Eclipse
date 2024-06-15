@@ -44,6 +44,6 @@ export default class GuildInfo extends Command {
             .setStyle(ButtonStyle.Secondary)
         )
 
-        await interaction.reply({ embeds: [GuildInfoEmbed], components: [GuildInfoButtons] });
+        await interaction.reply({ embeds: [GuildInfoEmbed], components: [GuildInfoButtons], ephemeral: true });
     }
 }

@@ -70,6 +70,6 @@ export default class ChannelInfo extends Command {
             { name: 'Date created', value: `${time(Math.floor(channels?.createdTimestamp as number / 1000))}`, inline: false },
         )
 
-        await interaction.reply({ embeds: [ChannelInfoEmbed] });
+        await interaction.reply({ embeds: [ChannelInfoEmbed], ephemeral: true });
     }
 }

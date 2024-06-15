@@ -50,6 +50,6 @@ export default class Kick extends Command {
 
         await member.kick(reason);
 
-        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been kicked successfully.\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: false });
+        await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been kicked successfully.\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: true });
     }
 }
