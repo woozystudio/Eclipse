@@ -37,6 +37,6 @@ export default class Unlock extends Command {
             SendMessagesInThreads: null
         });
 
-        await interaction.reply({ content: `${inlineCode(`✅`)} The channel ${channel} has been successfully unlocked!`, ephemeral: true });
+        await interaction.reply({ content: `${inlineCode(`✔️`)} The channel ${channel} has been successfully unlocked!`, ephemeral: true });
     }
 }

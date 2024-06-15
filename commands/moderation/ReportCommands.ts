@@ -58,6 +58,6 @@ export default class Report extends Command {
         const guildChannel = interaction.guild?.channels.cache.get(`${data.ChannelID}`) as TextChannel;
 
         await guildChannel.send({ embeds: [ReportEmbed] });
-        await interaction.reply({ content: `${inlineCode('✅')} Your report has been sent successfully.`, ephemeral: true })
+        await interaction.reply({ content: `${inlineCode('✔️')} Your report has been sent successfully.`, ephemeral: true })
     }
 }

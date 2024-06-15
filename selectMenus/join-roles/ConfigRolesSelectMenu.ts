@@ -15,6 +15,6 @@ export default class JoinRolesConfigSelectMenu extends SelectMenu {
         const selectedRoles = interaction.values;
         await JoinRolesConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { RoleID: selectedRoles, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${inlineCode('✅')} The join-roles plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${inlineCode('✔️')} The join-roles plugin has been successfully configured.`, ephemeral: true });
     }
 }
