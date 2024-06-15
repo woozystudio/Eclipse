@@ -37,6 +37,6 @@ export default class Lock extends Command {
             SendMessagesInThreads: false
         });
 
-        await interaction.reply({ content: `${inlineCode(`✅`)} The channel ${channel} has been successfully locked!`, ephemeral: true });
+        await interaction.reply({ content: `${inlineCode(`✔️`)} The channel ${channel} has been successfully locked!`, ephemeral: true });
     }
 }
