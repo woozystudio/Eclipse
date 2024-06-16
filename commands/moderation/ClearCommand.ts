@@ -26,7 +26,7 @@ export default class Clear extends Command {
                     type: ApplicationCommandOptionType.User
                 }
             ],
-            development: true
+            development: false
         });
     }
 
