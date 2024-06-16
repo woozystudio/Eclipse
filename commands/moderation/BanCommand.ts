@@ -48,21 +48,21 @@ export default class Ban extends Command {
         if (targetHighestRole.comparePositionTo(botHighestRole) >= 0) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they has a role superior or equal to mine.")], ephemeral: true });
         if (hasHigherPermissions) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they have higher or equal permissions to mine.")], ephemeral: true });
 
-        await member.ban({ reason: reason });
-
+        
         const UserDirectMessagesEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
         .setAuthor({ name: `${interaction.user.tag} (${interaction.user.id})`, iconURL: interaction.user.displayAvatarURL() })
         .setDescription(`
             You have been banned from ${bold(`${interaction.guild?.name}`)}
-    
+            
             ${bold('Reason:')}
             ${quote(reason)}
             
             You were banned by ${interaction.user.tag}.
-        `)
+            `)
 
         await member.send({ embeds: [UserDirectMessagesEmbed] }).catch(err => { return; });
+        await member.ban({ reason: reason });
         await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been banned successfully.\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: true });
     }
 }

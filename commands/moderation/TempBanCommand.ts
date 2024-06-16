@@ -76,7 +76,6 @@ export default class TempBan extends Command {
 
         const durationMs = duration * 1000;
         const banExpiresAt = Math.floor((Date.now() + durationMs) / 1000);
-        await member.ban({ reason: reason });
         
         const UserDirectMessagesEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
@@ -94,6 +93,7 @@ export default class TempBan extends Command {
             `)
             
         await member.send({ embeds: [UserDirectMessagesEmbed] }).catch(err => { console.log(err) });
+        await member.ban({ reason: reason });
         await interaction.reply({ embeds: [new SuccessEmbed(`The user ${target} has been temporarily banned successfully. The ban will be cancelled in ${time(banExpiresAt, "R")}\n${heading('Reason', 3)} \n${codeBlock(`${reason}`)}`)], ephemeral: true });
 
         setTimeout(async () => {
