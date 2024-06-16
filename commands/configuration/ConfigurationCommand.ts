@@ -50,6 +50,19 @@ export default class Configuration extends Command {
                             channel_types: [ChannelType.GuildCategory]
                         }
                     ]
+                },
+                {
+                    name: "mute",
+                    description: "Configure the mute plugin",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    options: [
+                        {
+                            name: "role",
+                            description: "Selects the role to be used to mute.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Role
+                        }
+                    ]
                 }
             ],
             development: false
