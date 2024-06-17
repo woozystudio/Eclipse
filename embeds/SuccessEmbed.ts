@@ -1,10 +1,11 @@
 import { inlineCode } from 'discord.js';
 import EmbedWrapper from './EmbedWrapper.js';
+import Case from '../enums/Case.js';
 
 export default class SuccessEmbed extends EmbedWrapper {
     constructor(description: string) {
         super();
-        this.setDescription(`${inlineCode("✔️")} ${description}`);
+        this.setDescription(`${Case.Success} ${description}`);
         this.setColor(0x43B582);
     }
 
