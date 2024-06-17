@@ -1,10 +1,11 @@
 import { inlineCode } from 'discord.js';
 import EmbedWrapper from './EmbedWrapper.js';
+import Case from '../enums/Case.js';
 
 export default class ErrorEmbed extends EmbedWrapper {
     constructor(description: string) {
         super();
-        this.setDescription(`${inlineCode("❌")} ${description}`);
+        this.setDescription(`${Case.Error} ${description}`);
         this.setColor(0xF04A47);
     }
 
