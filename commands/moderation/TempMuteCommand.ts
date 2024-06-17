@@ -5,6 +5,7 @@ import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
 import MuteConfig from "../../database/MuteConfig";
+import ms from "@naval-base/ms";
 
 export default class TempMute extends Command {
     constructor(client: Eclipse) {
@@ -22,29 +23,9 @@ export default class TempMute extends Command {
                 },
                 {
                     name: "duration",
-                    description: "Select the duration of the mute.",
+                    description: "Write the duration with the format: 1s, 1m, 1h, 1d, 1w and 1y",
                     required: true,
-                    type: ApplicationCommandOptionType.String,
-                    choices: [
-                        { name: '60 Seconds', value: '60' },
-                        { name: '2 Minutes', value: '120' },
-                        { name: '5 Minutes', value: '300' },
-                        { name: '10 Minutes', value: '600' },
-                        { name: '15 Minutes', value: '900' },
-                        { name: '20 Minutes', value: '1200' },
-                        { name: '30 Minutes', value: '1800' },
-                        { name: '45 Minutes', value: '2700' },
-                        { name: '1 Hour', value: '3600' },
-                        { name: '2 Hours', value: '7200' },
-                        { name: '3 Hours', value: '10800' },
-                        { name: '5 Hours', value: '18000' },
-                        { name: '10 Hours', value: '36000' },
-                        { name: '1 Day', value: '86400' },
-                        { name: '2 Day', value: '172800' },
-                        { name: '3 Day', value: '259200' },
-                        { name: '5 Days', value: '432000' },
-                        { name: 'One Week', value: '604800' },
-                    ]
+                    type: ApplicationCommandOptionType.String
                 }
             ],
             development: false
@@ -68,7 +49,7 @@ export default class TempMute extends Command {
         if (hasHigherPermissions) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they have higher or equal permissions to mine.")], ephemeral: true });
         if (member.roles.cache.has(`${data.RoleID}`)) return await interaction.reply({ embeds: [new ErrorEmbed(`The user ${target} is already muted within the server.`)], ephemeral: true }); 
 
-        const durationMs = duration * 1000;
+        const durationMs = ms(duration);
         const muteExpiresAt = Math.floor((Date.now() + durationMs) / 1000);
         
         try {
