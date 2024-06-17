@@ -1,7 +1,8 @@
-import { AnySelectMenuInteraction, PermissionFlagsBits, inlineCode } from "discord.js";
+import { AnySelectMenuInteraction, PermissionFlagsBits } from "discord.js";
 import Eclipse from "../../class/Eclipse";
 import SelectMenu from "../../class/SelectMenu";
 import JoinRolesConfig from "../../database/JoinRolesConfig";
+import Case from "../../enums/Case";
 
 export default class JoinRolesConfigSelectMenu extends SelectMenu {
     constructor(client: Eclipse) {
@@ -15,6 +16,6 @@ export default class JoinRolesConfigSelectMenu extends SelectMenu {
         const selectedRoles = interaction.values;
         await JoinRolesConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { RoleID: selectedRoles, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${inlineCode('✔️')} The join-roles plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${Case.Success} The join-roles plugin has been successfully configured.`, ephemeral: true });
     }
 }

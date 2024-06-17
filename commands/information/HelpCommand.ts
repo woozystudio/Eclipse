@@ -1,8 +1,9 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, bold, inlineCode } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, inlineCode } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import CommandOption from "../../types/CommandOption";
+import Case from "../../enums/Case";
 
 export default class Help extends Command {
     constructor(client: Eclipse) {
@@ -31,7 +32,7 @@ export default class Help extends Command {
             const findCommand = commands.find(cmd => cmd.name === command);
 
             if (!findCommand) {
-                await interaction.reply({ content: `${inlineCode('❌')} No command found with the name ${inlineCode(command)}`, ephemeral: true });
+                await interaction.reply({ content: `${Case.Error} No command found with the name ${inlineCode(command)}`, ephemeral: true });
                 return;
             }
 

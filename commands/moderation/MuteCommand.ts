@@ -1,10 +1,11 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, GuildMember, PermissionFlagsBits, Role, User, inlineCode } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, GuildMember, PermissionFlagsBits, Role, User } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
 import MuteConfig from "../../database/MuteConfig";
+import Case from "../../enums/Case";
 
 export default class Mute extends Command {
     constructor(client: Eclipse) {
@@ -35,7 +36,7 @@ export default class Mute extends Command {
         const hasHigherPermissions = targetPermissions.has(PermissionFlagsBits.Administrator) || (botPermissions?.has(PermissionFlagsBits.Administrator) && targetPermissions.has(botPermissions.bitfield));
         const data = await MuteConfig.findOne({ GuildID: interaction.guild?.id });
         
-        if (!data) return interaction.reply({ content: `${inlineCode('❌')} Apparently, you have not configured the mute plugin. Try configuring the plugin.`, ephemeral: true });
+        if (!data) return interaction.reply({ content: `${Case.Error} Apparently, you have not configured the mute plugin. Try configuring the plugin.`, ephemeral: true });
         if (!member) return await interaction.reply({ embeds: [new ErrorEmbed("The user mentioned is no longer within the server.")], ephemeral: true });
         if (targetHighestRole.comparePositionTo(botHighestRole) >= 0) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they has a role superior or equal to mine.")], ephemeral: true });
         if (hasHigherPermissions) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they have higher or equal permissions to mine.")], ephemeral: true });
