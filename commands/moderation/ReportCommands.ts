@@ -1,8 +1,9 @@
-import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel, bold, codeBlock, inlineCode } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel, bold, inlineCode } from "discord.js";
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ReportsConfig from "../../database/ReportsConfig";
+import Case from "../../enums/Case";
 
 export default class Report extends Command {
     constructor(client: Eclipse) {
@@ -53,11 +54,11 @@ export default class Report extends Command {
         .setTimestamp()
 
         const data = await ReportsConfig.findOne({ GuildID: interaction.guild?.id });
-        if(!data) return interaction.reply({ content: `${inlineCode('❌')} Apparently, you have not configured the report plugin. Try configuring the plugin.`, ephemeral: true });
+        if(!data) return interaction.reply({ content: `${Case.Error} Apparently, you have not configured the report plugin. Try configuring the plugin.`, ephemeral: true });
         
         const guildChannel = interaction.guild?.channels.cache.get(`${data.ChannelID}`) as TextChannel;
 
         await guildChannel.send({ embeds: [ReportEmbed] });
-        await interaction.reply({ content: `${inlineCode('✔️')} Your report has been sent successfully.`, ephemeral: true })
+        await interaction.reply({ content: `${Case.Success} Your report has been sent successfully.`, ephemeral: true })
     }
 }

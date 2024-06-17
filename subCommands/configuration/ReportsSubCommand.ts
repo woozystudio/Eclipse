@@ -1,8 +1,9 @@
-import { ChatInputCommandInteraction, TextChannel, inlineCode } from "discord.js";
+import { ChatInputCommandInteraction, TextChannel } from "discord.js";
 import SubCommand from "../../class/SubCommand";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ReportsConfig from "../../database/ReportsConfig";
+import Case from "../../enums/Case";
 
 export default class Reports extends SubCommand {
     constructor(client: Eclipse) {
@@ -19,6 +20,6 @@ export default class Reports extends SubCommand {
         
         await ReportsConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { ChannelID: channel.id, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${inlineCode('✔️')} The reporting plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${Case.Success} The reporting plugin has been successfully configured.`, ephemeral: true });
     }
 }
