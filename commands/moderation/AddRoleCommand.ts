@@ -14,16 +14,16 @@ export default class AddRole extends Command {
             userPermissions: PermissionFlagsBits.ManageRoles,
             options: [
                 {
-                    name: "role",
-                    description: "Select the role you want to add.",
-                    required: true,
-                    type: ApplicationCommandOptionType.Role
-                },
-                {
                     name: "target",
                     description: "Select the user you want to add the role to.",
                     required: true,
                     type: ApplicationCommandOptionType.User
+                },
+                {
+                    name: "role",
+                    description: "Select the role you want to add.",
+                    required: true,
+                    type: ApplicationCommandOptionType.Role
                 }
             ],
             development: false
