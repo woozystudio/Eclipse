@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ReportsConfig from "../../database/ReportsConfig";
 import Case from "../../enums/Case";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Reports extends SubCommand {
     constructor(client: Eclipse) {
@@ -11,7 +12,8 @@ export default class Reports extends SubCommand {
             name: "reports",
             category: Category.Configuration,
             command: "config",
-            group: ""
+            group: "",
+            locale: LocaleParam
         });
     }
 

@@ -3,6 +3,7 @@ import SubCommand from "../../class/SubCommand";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import JoinRolesConfig from "../../database/JoinRolesConfig";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class JoinRoles extends SubCommand {
     constructor(client: Eclipse) {
@@ -10,7 +11,8 @@ export default class JoinRoles extends SubCommand {
             name: "join-roles",
             category: Category.Configuration,
             command: "config",
-            group: ""
+            group: "",
+            locale: LocaleParam
         });
     }
 

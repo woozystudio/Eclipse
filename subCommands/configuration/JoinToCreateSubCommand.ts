@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import JoinToCreateConfig from "../../database/JoinToCreateConfig";
 import Case from "../../enums/Case";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class JoinToCreate extends SubCommand {
     constructor(client: Eclipse) {
@@ -11,7 +12,8 @@ export default class JoinToCreate extends SubCommand {
             name: "join-to-create",
             category: Category.Configuration,
             command: "config",
-            group: ""
+            group: "",
+            locale: LocaleParam
         });
     }
 
