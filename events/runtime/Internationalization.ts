@@ -5,11 +5,11 @@ import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import 'colors';
 
-export default class i18nextTranslations extends Event {
+export default class Internationalization extends Event {
     constructor(client: Eclipse) {
         super(client, {
             name: Events.ClientReady,
-            description: "i18nextTranslations Event",
+            description: "Internationalization Event",
             once: true
         })
     }
@@ -26,6 +26,6 @@ export default class i18nextTranslations extends Event {
             returnEmptyString: false,
         });
         
-        console.log(`Successfully loaded translations with i18next.`.magenta)
+        console.log(`Successfully loaded i18next system.`.magenta)
     }
 }
