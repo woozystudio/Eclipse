@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class AddRole extends Command {
     constructor(client: Eclipse) {
@@ -14,19 +15,20 @@ export default class AddRole extends Command {
             userPermissions: PermissionFlagsBits.ManageRoles,
             options: [
                 {
-                    name: "role",
-                    description: "Select the role you want to add.",
-                    required: true,
-                    type: ApplicationCommandOptionType.Role
-                },
-                {
                     name: "target",
                     description: "Select the user you want to add the role to.",
                     required: true,
                     type: ApplicationCommandOptionType.User
+                },
+                {
+                    name: "role",
+                    description: "Select the role you want to add.",
+                    required: true,
+                    type: ApplicationCommandOptionType.Role
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 

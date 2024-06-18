@@ -2,6 +2,7 @@ import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction,
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Lock extends Command {
     constructor(client: Eclipse) {
@@ -19,7 +20,8 @@ export default class Lock extends Command {
                     channel_types: [ChannelType.GuildText]
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 

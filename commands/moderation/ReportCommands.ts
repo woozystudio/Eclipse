@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ReportsConfig from "../../database/ReportsConfig";
 import Case from "../../enums/Case";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Report extends Command {
     constructor(client: Eclipse) {
@@ -32,7 +33,8 @@ export default class Report extends Command {
                     type: ApplicationCommandOptionType.Attachment
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 

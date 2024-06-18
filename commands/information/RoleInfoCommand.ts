@@ -2,6 +2,7 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class RoleInfo extends Command {
     constructor(client: Eclipse) {
@@ -18,7 +19,8 @@ export default class RoleInfo extends Command {
                     type: ApplicationCommandOptionType.Role
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 
