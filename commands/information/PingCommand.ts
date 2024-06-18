@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, codeBlo
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Ping extends Command {
     constructor(client: Eclipse) {
@@ -11,7 +12,8 @@ export default class Ping extends Command {
             category: Category.Information,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             options: [],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 

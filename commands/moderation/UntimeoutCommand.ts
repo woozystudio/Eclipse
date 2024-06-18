@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class UnTimeout extends Command {
     constructor(client: Eclipse) {
@@ -26,7 +27,8 @@ export default class UnTimeout extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 
