@@ -10,6 +10,7 @@ export default class SubCommand implements SubCommandListener {
     group: string;
     name: string;
     category: Category;
+    locale: string;
     
     constructor(client: Eclipse, on: SubCommandManager){
         this.client = client;
@@ -17,6 +18,7 @@ export default class SubCommand implements SubCommandListener {
         this.group = on.group;
         this.name = on.name;
         this.category = on.category;
+        this.locale = on.locale;
     }
 
     Execute(interaction: ChatInputCommandInteraction<CacheType>): void {
