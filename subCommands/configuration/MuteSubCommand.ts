@@ -22,6 +22,6 @@ export default class MuteSub extends SubCommand {
 
         await MuteConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { RoleID: role.id, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${Case.Success} The muting plugin has been successfully configured.`, ephemeral: false });
+        await interaction.reply({ content: `${Case.Success} The muting plugin has been successfully configured.`, ephemeral: true });
     }
 }
