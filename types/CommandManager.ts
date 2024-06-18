@@ -7,4 +7,5 @@ export default interface CommandManager {
     options: object;
     userPermissions: bigint;
     development: boolean;
+    locale: string;
 }

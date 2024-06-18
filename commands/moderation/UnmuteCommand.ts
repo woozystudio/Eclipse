@@ -6,6 +6,7 @@ import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
 import MuteConfig from "../../database/MuteConfig";
 import Case from "../../enums/Case";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Unmute extends Command {
     constructor(client: Eclipse) {
@@ -22,7 +23,8 @@ export default class Unmute extends Command {
                     type: ApplicationCommandOptionType.User
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 

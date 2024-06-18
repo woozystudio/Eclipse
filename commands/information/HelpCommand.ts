@@ -4,6 +4,7 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import CommandOption from "../../types/CommandOption";
 import Case from "../../enums/Case";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Help extends Command {
     constructor(client: Eclipse) {
@@ -20,7 +21,8 @@ export default class Help extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: false
+            development: false,
+            locale: LocaleParam
         });
     }
 
