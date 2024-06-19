@@ -5,7 +5,6 @@ import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
 import ms from "@naval-base/ms";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class TempRole extends Command {
     constructor(client: Eclipse) {
@@ -34,8 +33,7 @@ export default class TempRole extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

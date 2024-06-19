@@ -2,7 +2,6 @@ import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction,
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Configuration extends Command {
     constructor(client: Eclipse) {
@@ -66,8 +65,7 @@ export default class Configuration extends Command {
                     ]
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

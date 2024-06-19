@@ -2,7 +2,6 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Avatar extends Command {
     constructor(client: Eclipse) {
@@ -36,8 +35,7 @@ export default class Avatar extends Command {
                     ]
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

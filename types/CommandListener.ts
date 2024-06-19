@@ -10,7 +10,6 @@ export default interface CommandListener {
     options: object;
     default_member_permissions: bigint;
     development: boolean;
-    locale: string;
 
     Execute(interaction: ChatInputCommandInteraction): void;
     AutoComplete(interaction: AutocompleteInteraction): void;

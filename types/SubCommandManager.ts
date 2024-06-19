@@ -5,5 +5,4 @@ export default interface SubCommandManager {
     group: string;
     name: string;
     category: Category;
-    locale: string;
 }
