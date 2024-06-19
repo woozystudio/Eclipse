@@ -12,7 +12,6 @@ export default class Command implements CommandListener {
     options: object;
     default_member_permissions: bigint;
     development: boolean;
-    locale: string;
 
     constructor(client: Eclipse, on: CommandManager) {
         this.client = client;
@@ -22,7 +21,6 @@ export default class Command implements CommandListener {
         this.options = on.options;
         this.default_member_permissions = on.userPermissions;
         this.development = on.development;
-        this.locale = on.locale;
     }
 
     Execute(interaction: ChatInputCommandInteraction<CacheType>): void {

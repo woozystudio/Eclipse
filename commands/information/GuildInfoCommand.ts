@@ -2,7 +2,6 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCom
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class GuildInfo extends Command {
     constructor(client: Eclipse) {
@@ -12,8 +11,7 @@ export default class GuildInfo extends Command {
             category: Category.Information,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             options: [],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

@@ -2,7 +2,6 @@ import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction,
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
-import { LocaleParam } from "../../types/LocaleParam";
 import LanguageConfig from "../../database/LanguageConfig";
 import Case from "../../enums/Case";
 
@@ -29,8 +28,7 @@ export default class Language extends Command {
                     ]
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

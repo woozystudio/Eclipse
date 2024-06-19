@@ -2,7 +2,6 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class ChannelInfo extends Command {
     constructor(client: Eclipse) {
@@ -19,8 +18,7 @@ export default class ChannelInfo extends Command {
                     type: ApplicationCommandOptionType.Channel
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 
