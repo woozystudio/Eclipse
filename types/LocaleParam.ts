@@ -1,13 +1,14 @@
-const data = {
-    locale: 'en-US'
-}
+import { AnySelectMenuInteraction, ButtonInteraction, CacheType, ChatInputCommandInteraction, ContextMenuCommandInteraction, Guild } from "discord.js";
+import LanguageConfig from "../database/LanguageConfig";
+import Eclipse from "../class/Eclipse";
 
-export default class LocaleConfig {
-    private static _localeParam: string = data.locale;
+export let LocaleParam: string;
 
-    public static get localeParam(): string {
-        return LocaleConfig._localeParam;
+export async function fetchLanguage(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction | AnySelectMenuInteraction) {
+    const data = await LanguageConfig.findOne({ GuildID: interaction.guild?.id });
+    if(data && data.Language) {
+        return LocaleParam = `${data?.Language}`;
+    } else {
+        return LocaleParam = 'en-US';
     }
 }
-
-export const LocaleParam = LocaleConfig.localeParam
