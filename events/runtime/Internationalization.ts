@@ -1,4 +1,4 @@
-import { ActivityType, Events, PresenceUpdateStatus } from "discord.js";
+import { Events } from "discord.js";
 import Eclipse from "../../class/Eclipse";
 import Event from "../../class/Event";
 import i18next from "i18next";
@@ -20,12 +20,11 @@ export default class Internationalization extends Event {
                 loadPath: 'locales/{{lng}}/{{ns}}.json'
             },
             cleanCode: true,
-            lng: 'en-US',
             preload: ['en-US', 'es-MX'],
             returnNull: false,
             returnEmptyString: false,
         });
-        
+
         console.log(`Successfully loaded i18next system.`.magenta)
     }
 }
