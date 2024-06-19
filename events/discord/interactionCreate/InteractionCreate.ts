@@ -5,6 +5,7 @@ import Eclipse from "../../../class/Eclipse";
 import ContextMenu from "../../../class/ContextMenu";
 import Button from "../../../class/Button";
 import SelectMenu from "../../../class/SelectMenu";
+import { fetchLanguage } from "../../../types/LocaleParam";
 
 export default class InteractionCreate extends Event {
     constructor(client: Eclipse) {
@@ -16,6 +17,8 @@ export default class InteractionCreate extends Event {
     }
 
     async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction | AnySelectMenuInteraction) {
+        await fetchLanguage(interaction);
+
         if(interaction.isChatInputCommand()) {
             const command: Command = this.client.commands.get(interaction.commandName)!;
     
