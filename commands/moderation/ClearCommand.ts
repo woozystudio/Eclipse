@@ -4,7 +4,6 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Clear extends Command {
     constructor(client: Eclipse) {
@@ -27,8 +26,7 @@ export default class Clear extends Command {
                     type: ApplicationCommandOptionType.User
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

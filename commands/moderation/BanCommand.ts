@@ -4,7 +4,6 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Ban extends Command {
     constructor(client: Eclipse) {
@@ -27,8 +26,7 @@ export default class Ban extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 

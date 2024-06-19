@@ -4,7 +4,6 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import MuteConfig from "../../database/MuteConfig";
 import Case from "../../enums/Case";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class MuteSub extends SubCommand {
     constructor(client: Eclipse) {
@@ -12,8 +11,7 @@ export default class MuteSub extends SubCommand {
             name: "mute",
             category: Category.Configuration,
             command: "config",
-            group: "",
-            locale: LocaleParam
+            group: ""
         });
     }
 

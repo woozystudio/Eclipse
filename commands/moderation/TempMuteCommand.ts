@@ -7,7 +7,6 @@ import SuccessEmbed from "../../embeds/SuccessEmbed";
 import MuteConfig from "../../database/MuteConfig";
 import Case from "../../enums/Case";
 import ms from "@naval-base/ms";
-import { LocaleParam } from "../../types/LocaleParam";
 
 export default class TempMute extends Command {
     constructor(client: Eclipse) {
@@ -30,8 +29,7 @@ export default class TempMute extends Command {
                     type: ApplicationCommandOptionType.String
                 }
             ],
-            development: false,
-            locale: LocaleParam
+            development: false
         });
     }
 
