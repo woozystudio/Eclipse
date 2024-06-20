@@ -1,4 +1,4 @@
-import { AnySelectMenuInteraction, ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events, inlineCode } from "discord.js";
+import { AnySelectMenuInteraction, ButtonInteraction, ChatInputCommandInteraction, ContextMenuCommandInteraction, Events, ModalSubmitInteraction, inlineCode } from "discord.js";
 import Event from "../../../class/Event";
 import Command from "../../../class/Command";
 import Eclipse from "../../../class/Eclipse";
@@ -6,6 +6,7 @@ import ContextMenu from "../../../class/ContextMenu";
 import Button from "../../../class/Button";
 import SelectMenu from "../../../class/SelectMenu";
 import { fetchLanguage } from "../../../types/LocaleParam";
+import Modal from "../../../class/Modal";
 
 export default class InteractionCreate extends Event {
     constructor(client: Eclipse) {
@@ -16,7 +17,7 @@ export default class InteractionCreate extends Event {
         });
     }
 
-    async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction | AnySelectMenuInteraction) {
+    async Execute(interaction: ChatInputCommandInteraction | ContextMenuCommandInteraction | ButtonInteraction | AnySelectMenuInteraction | ModalSubmitInteraction) {
         await fetchLanguage(interaction);
 
         if(interaction.isChatInputCommand()) {
@@ -93,6 +94,25 @@ export default class InteractionCreate extends Event {
                 const selectMenuId = `${interaction.customId}`;
     
                 this.client.selectMenus.get(selectMenuId)?.Execute(interaction) || selectMenu.Execute(interaction);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        if (interaction.isModalSubmit()) {
+            const modal: Modal = this.client.modals.get(interaction.customId)!;
+
+            //@ts-ignore
+            if (!modal) return interaction.reply({ content: `outdated modal` }) && this.client.modals.delete(interaction.customid);
+
+            const target = await interaction.guild?.members.fetch(interaction.user.id);
+
+            if(!target?.permissions.has(modal.default_member_permissions)) return await interaction.reply({ content: `${inlineCode("❌")} You don't have sufficient permissions to execute this modal.`, ephemeral: true });
+
+            try {
+                const modalId = `${interaction.customId}`;
+    
+                this.client.modals.get(modalId)?.Execute(interaction) || modal.Execute(interaction);
             } catch (err) {
                 console.log(err);
             }

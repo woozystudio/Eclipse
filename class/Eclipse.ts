@@ -6,9 +6,10 @@ import Command from "./Command";
 import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
+import SelectMenu from "./SelectMenu";
+import Modal from "./Modal";
 import { connect } from "mongoose";
 import 'colors';
-import SelectMenu from "./SelectMenu";
 
 export default class Eclipse extends Client implements Bot
 {
@@ -19,6 +20,7 @@ export default class Eclipse extends Client implements Bot
     buttons: Collection<string, Button>;
     selectMenus: Collection<string, SelectMenu>;
     contextMenus: Collection<string, ContextMenu>
+    modals: Collection<string, Modal>
     development: boolean;
     version: any;
 
@@ -42,6 +44,7 @@ export default class Eclipse extends Client implements Bot
         this.buttons = new Collection();
         this.selectMenus = new Collection();
         this.contextMenus = new Collection();
+        this.modals = new Collection();
         this.development = (process.argv.slice(2).includes("--development"));
     }
     
@@ -63,5 +66,6 @@ export default class Eclipse extends Client implements Bot
         this.addListeners.createButtonInteractions();
         this.addListeners.createSelectMenuInteractions();
         this.addListeners.createContextMenuCommandsInteractions();
+        this.addListeners.createModalSubmitInteractions();
     }
 }

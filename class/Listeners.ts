@@ -8,6 +8,7 @@ import SubCommand from "./SubCommand";
 import Button from "./Button";
 import ContextMenu from "./ContextMenu";
 import SelectMenu from "./SelectMenu";
+import Modal from "./Modal";
 
 export default class Listeners implements Handler {
     client: Eclipse;
@@ -112,6 +113,21 @@ export default class Listeners implements Handler {
                 return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid name.`);
             
             this.client.contextMenus.set(contextMenu.name, contextMenu as ContextMenu);
+
+            return delete require.cache[require.resolve(file)]
+        });
+    }
+
+    async createModalSubmitInteractions() {
+        const files = (await glob(`build/modals/**/*.js`)).map(filePath => path.resolve(filePath));
+
+        files.map(async (file: string) => {
+            const modal: Modal = new(await import(file)).default(this.client);
+
+            if(!modal.custom_id)
+                return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid id.`);
+
+            this.client.modals.set(modal.custom_id, modal as Modal);
 
             return delete require.cache[require.resolve(file)]
         });
