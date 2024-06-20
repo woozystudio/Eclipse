@@ -5,4 +5,5 @@ export default interface Handler {
     createButtonInteractions(): void;
     createSelectMenuInteractions(): void;
     createContextMenuCommandsInteractions(): void;
+    createModalSubmitInteractions(): void;
 }
