@@ -63,6 +63,33 @@ export default class Configuration extends Command {
                             type: ApplicationCommandOptionType.Role
                         }
                     ]
+                },
+                {
+                    name: "tickets",
+                    description: "Configure the tickets plugin.",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    options: [
+                        {
+                            name: "channel",
+                            description: "Select the channel where the message to create the tickets will be sent.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Channel,
+                            channel_types: [ChannelType.GuildText]
+                        },
+                        {
+                            name: "category",
+                            description: "Select the category where the tickets will be created.",
+                            required: true,
+                            type: ApplicationCommandOptionType.Channel,
+                            channel_types: [ChannelType.GuildCategory]
+                        },
+                        {
+                            name: "description",
+                            description: "Write the description for the ticket creation embed.",
+                            required: false,
+                            type: ApplicationCommandOptionType.String
+                        },
+                    ]
                 }
             ],
             development: false
