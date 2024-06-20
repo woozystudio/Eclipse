@@ -5,6 +5,7 @@ import Category from "../../enums/Category";
 import ErrorEmbed from "../../embeds/ErrorEmbed";
 import SuccessEmbed from "../../embeds/SuccessEmbed";
 import ms from "@naval-base/ms";
+import Case from "../../enums/Case";
 
 export default class TempRole extends Command {
     constructor(client: Eclipse) {
@@ -48,7 +49,7 @@ export default class TempRole extends Command {
         const targetPermissions = member.permissions;
         const hasHigherPermissions = targetPermissions.has(PermissionFlagsBits.Administrator) || (botPermissions?.has(PermissionFlagsBits.Administrator) && targetPermissions.has(botPermissions.bitfield));
 
-        if (!botPermissions?.has(new TempRole(this.client).default_member_permissions)) return await interaction.reply({ content: `${inlineCode(`❌`)} I don't have sufficient permissions to perform this action. Missing Permissions: ${inlineCode(`ManageRoles`)}`, ephemeral: false });
+        if (!botPermissions?.has(new TempRole(this.client).default_member_permissions)) return await interaction.reply({ content: `${Case.Error} I don't have sufficient permissions to perform this action. Missing Permissions: ${inlineCode(`ManageRoles`)}`, ephemeral: false });
         if (!member) return await interaction.reply({ embeds: [new ErrorEmbed("The user mentioned is no longer within the server.")], ephemeral: true });
         if (!role) return await interaction.reply({ embeds: [new ErrorEmbed("The role you mentioned does not exist or was not found.")], ephemeral: true });
         if (targetHighestRole.comparePositionTo(botHighestRole) >= 0) return await interaction.reply({ embeds: [new ErrorEmbed("You cannot select this user as they has a role superior or equal to mine.")], ephemeral: true });
