@@ -1,0 +1,276 @@
+{
+    "common": {
+        "errors": {
+            "developers_only": "",
+            "outtodate": ""
+        }
+    },
+    "command": {
+        "common": {
+            "errors": {
+                "target_not_found": "",
+                "generic": "",
+                "missing_permissions": "",
+                "bot_missing_permissions": "",
+                "user_grater": "",
+                "higher_role": "",
+                "user_greater_perms": ""
+            },
+            "date_created": "",
+            "name": "",
+            "permissions": "",
+            "owner": "",
+            "date_joined": "",
+            "description": "",
+            "type": "",
+            "channel": "",
+            "members": "",
+            "channels": {
+                "text": "",
+                "voice": "",
+                "stage": "",
+                "announcement": "",
+                "forum": "",
+                "media": "",
+                "private_thread": "",
+                "public_thread": ""
+            }
+        },
+        "config": {
+            "common": {
+                "errors": {
+                    "no_plugin_settings": ""
+                },
+                "success": ""
+            },
+            "joinroles": {
+                "description": "",
+                "placeholder": ""
+            },
+            "tickets": {
+                "buttons": {
+                    "create_ticket": "",
+                    "close": "",
+                    "claim": "",
+                    "lock": "",
+                    "unlock": "",
+                    "rename": "",
+                    "more_options": ""
+                },
+                "description": {
+                    "header": {
+                        "what_are": "",
+                        "how_to": ""
+                    },
+                    "what_are": "",
+                    "how_to": ""
+                },
+                "newticket": {
+                    "header": "",
+                    "description": ""
+                },
+                "close_ticket": "",
+                "claim": {
+                    "errors": {
+                        "already_claimed": ""
+                    },
+                    "from_now": ""
+                },
+                "close": {
+                    "errors": {
+                        "already_closed": ""
+                    }
+                },
+                "lock": {
+                    "errors": {
+                        "already_locked": ""
+                    },
+                    "success": ""
+                },
+                "unlock": {
+                    "errors": {
+                        "not_locked": ""
+                    },
+                    "success": ""
+                },
+                "rename": {
+                    "modal": {
+                        "label": "",
+                        "ticket_name": "",
+                        "placeholder": ""
+                    },
+                    "success": ""
+                },
+                "success": "",
+                "ticketoptions": {
+                    "header": "",
+                    "description": ""
+                }
+            }
+        },
+        "lang": {
+            "success": ""
+        },
+        "avatar": {
+            "title": "",
+            "requested": ""
+        },
+        "botinfo": {
+            "title": "",
+            "credits": "",
+            "credits_details": "",
+            "version": ""
+        },
+        "channelinfo": {
+            "errors": {
+                "no_support": "",
+                "no_topic": ""
+            },
+            "title": "",
+            "topic": "",
+            "parent": ""
+        },
+        "github": {
+            "title": "",
+            "description": "",
+            "button": ""
+        },
+        "guildinfo": {
+            "buttons": {
+                "view_roles": "",
+                "view_channels": ""
+            }
+        },
+        "help": {
+            "errors": {
+                "no_command": ""
+            },
+            "title": "",
+            "info_commands": "",
+            "mod_commands": "",
+            "description": "",
+            "footer": "",
+            "commandinfo": {
+                "title": "",
+                "usage": ""
+            }
+        },
+        "ping": {
+            "bot_latency": "",
+            "api_latency": ""
+        },
+        "roleinfo": {
+            "title": "",
+            "position": ""
+        },
+        "mod": {
+            "common": {
+                "errors": {
+                    "no_reason": ""
+                }
+            },
+            "addrole": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "removerole": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "ban": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "banned_from": "",
+                "success": ""
+            },
+            "clear": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "user_success": "",
+                "success": ""
+            },
+            "kick": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "lock": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "mute": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "report": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "tempban": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "duration": "",
+                "success": ""
+            },
+            "tempmute": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "temprole": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "timeout": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "timeout_from": "",
+                "success": ""
+            },
+            "unban": {
+                "errors": {
+                    "missing_permissions": "",
+                    "id_no_valid": "",
+                    "no_ban": ""
+                },
+                "success": ""
+            },
+            "unmute": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "untimeout": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            },
+            "unlock": {
+                "errors": {
+                    "missing_permissions": ""
+                },
+                "success": ""
+            }
+        }
+    }
+}
