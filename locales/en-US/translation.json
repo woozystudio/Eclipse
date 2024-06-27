@@ -44,7 +44,7 @@
                 "success": "The plugin has been successfully configured."
             },
             "joinroles": {
-                "description": "❓ Select the roles that will be automatically granted to all users that log in to the server. \n💡 You can change this anytime using the \\`/config join-roles\\` command.",
+                "description": "❓ Select the roles that will be automatically granted to all users that log in to the server.\n \n💡 You can change this anytime using the {{- command}} command.",
                 "placeholder": "Select one or more server roles"
             },
             "tickets": {

@@ -44,7 +44,7 @@
                 "success": "El plugin se ha configurado correctamente."
             },
             "joinroles": {
-                "description": "❓ Selecciona los roles que serán otorgados automáticamente a los usuarios que ingresen al servidor.\n💡 Puede cambiar esto en cualquier momento utilizando el comando \\`/config join-roles\\`.",
+                "description": "❓ Selecciona los roles que serán otorgados automáticamente a los usuarios que ingresen al servidor.\n \n💡 Puede cambiar esto en cualquier momento utilizando el comando {{- command}}.",
                 "placeholder": "Selecciona uno o varios roles de servidor"
             },
             "tickets": {
