@@ -113,7 +113,7 @@
         },
         "avatar": {
             "title": "Avatar de {{- username}}",
-            "requested": "Requested by {{- username}}"
+            "requested": "Solicitado por {{- username}}"
         },
         "botinfo": {
             "title": "Información del Bot",
