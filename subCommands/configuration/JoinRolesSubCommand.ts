@@ -3,6 +3,8 @@ import SubCommand from "../../class/SubCommand";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import JoinRolesConfig from "../../database/JoinRolesConfig";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class JoinRoles extends SubCommand {
     constructor(client: Eclipse) {
@@ -17,16 +19,12 @@ export default class JoinRoles extends SubCommand {
     async Execute(interaction: ChatInputCommandInteraction) {
         const JoinRolesEmbed = new EmbedBuilder()
             .setColor("Yellow")
-            .setDescription(`
-            ${inlineCode(`❓`)} Select the roles that will be automatically granted to all users that log in to the server.
-
-            ${inlineCode(`💡`)} You can change this anytime using the ${inlineCode(`/config join-roles`)} command.
-        `)
+            .setDescription(`${i18next.t('command.config.joinroles.description', { lng: LocaleParam, command: `\`/config join-roles\`` })}`)
 
         const RolesSelectMenu = new ActionRowBuilder<RoleSelectMenuBuilder>().addComponents(
             new RoleSelectMenuBuilder()
             .setCustomId('joinroles-config-menu')
-            .setPlaceholder('Select one or more server roles')
+            .setPlaceholder(`${i18next.t('command.config.joinroles.placeholder', { lng: LocaleParam })}`)
             .setMaxValues(25)
             .setMinValues(1)
         )
