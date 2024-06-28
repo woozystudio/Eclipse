@@ -4,6 +4,8 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import LanguageConfig from "../../database/LanguageConfig";
 import Case from "../../enums/Case";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Language extends Command {
     constructor(client: Eclipse) {
@@ -38,7 +40,7 @@ export default class Language extends Command {
     
             await LanguageConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { Language: lang, }, { new: true, upsert: true });
 
-            await interaction.reply({ content: `${Case.Success} The language has been established to ${inlineCode(lang)}`, ephemeral: true });
+            await interaction.reply({ content: `${Case.Success} ${i18next.t('command.lang.success', { lng: LocaleParam, lang: inlineCode(lang) })}`, ephemeral: true });
         } catch (err) {
             console.error(err)
         }
