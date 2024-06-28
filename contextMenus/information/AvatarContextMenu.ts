@@ -2,6 +2,8 @@ import { ApplicationCommandType, EmbedBuilder, PermissionFlagsBits, UserContextM
 import ContextMenu from "../../class/ContextMenu";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class AvatarMenu extends ContextMenu {
     constructor(client: Eclipse) {
@@ -10,7 +12,7 @@ export default class AvatarMenu extends ContextMenu {
             type: ApplicationCommandType.User,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             category: Category.Information,
-            development: false
+            development: true
         });
     }
 
@@ -19,9 +21,9 @@ export default class AvatarMenu extends ContextMenu {
 
         const AvatarEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
-        .setTitle(`@${target?.username}'s avatar`)
+        .setTitle(`${i18next.t('command.avatar.title', { lng: LocaleParam, username: target.username })}`)
         .setImage(`${target?.displayAvatarURL({ size: 4096 })}`)
-        .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() })
+        .setFooter({ text: `${i18next.t('command.avatar.requested', { lng: LocaleParam, username: interaction.user.username })}`, iconURL: interaction.user.displayAvatarURL() })
 
         await interaction.reply({ embeds: [AvatarEmbed] });
     }

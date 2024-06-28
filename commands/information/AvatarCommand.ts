@@ -2,6 +2,8 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Avatar extends Command {
     constructor(client: Eclipse) {
@@ -45,8 +47,8 @@ export default class Avatar extends Command {
 
         const AvatarEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
-        .setTitle(`@${target?.username}'s avatar`)
-        .setFooter({ text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL() })
+        .setTitle(`${i18next.t('command.avatar.title', { lng: LocaleParam, username: target.username })}`)
+        .setFooter({ text: `${i18next.t('command.avatar.requested', { lng: LocaleParam, username: interaction.user.username })}`, iconURL: interaction.user.displayAvatarURL() })
         
         switch (size) {
             case '16':
