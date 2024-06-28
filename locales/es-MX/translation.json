@@ -31,11 +31,11 @@
                 "stage": "Escenario",
                 "category": "Categoría",
                 "announcement": "Anuncios",
-                "announcement_threads": "Hilos de Anuncios",
+                "announcement_thread": "Hilos de Anuncios",
                 "forum": "Foro",
                 "media": "Media",
-                "private_thread": "Hilo Privado",
-                "public_thread": "Hilo Público"
+                "private_thread": "Hilos Privados",
+                "public_thread": "Hilos Públicos"
             }
         },
         "config": {

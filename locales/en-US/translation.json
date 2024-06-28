@@ -34,8 +34,8 @@
                 "announcement_threads": "Announcement Threads",
                 "forum": "Forum",
                 "media": "Media",
-                "private_thread": "Private Thread",
-                "public_thread": "Public Thread"
+                "private_thread": "Private Threads",
+                "public_thread": "Public Threads"
             }
         },
         "config": {
