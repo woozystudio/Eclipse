@@ -1,3 +1,278 @@
 {
-    "lang": "English"
+    "common": {
+        "errors": {
+            "developers_only": "Command is only for developers.",
+            "outtodate": "Not updated. Try later."
+        }
+    },
+    "command": {
+        "common": {
+            "errors": {
+                "target_not_found": "The given member is not in this guild.",
+                "generic": "Something went wrong.",
+                "missing_permissions": "Missing permissions: {{- permissions}}.",
+                "bot_missing_permissions": "Bot Missing permissions: {{- permissions}}.",
+                "user_grater": "Cannot select user with higher or equal role.",
+                "higher_role": "Cannot select higher role.",
+                "user_greater_perms": "Cannot select user with higher or equal permissions."
+            },
+            "date_created": "Date Created",
+            "name": "Name",
+            "permissions": "Permissions",
+            "owner": "Owner",
+            "date_joined": "Date Joined",
+            "description": "Description",
+            "type": "Type",
+            "channel": "Channels",
+            "members": "Members",
+            "channels": {
+                "text": "Text",
+                "voice": "Voice",
+                "stage": "Stage",
+                "category": "Category",
+                "announcement": "Announcement",
+                "announcement_thread": "Announcement Threads",
+                "forum": "Forum",
+                "media": "Media",
+                "private_thread": "Private Threads",
+                "public_thread": "Public Threads"
+            }
+        },
+        "config": {
+            "common": {
+                "errors": {
+                    "no_plugin_settings": "No plugin settings have been initialized yet."
+                },
+                "success": "The plugin has been successfully configured."
+            },
+            "joinroles": {
+                "description": "❓ Select the roles that will be automatically granted to all users that log in to the server.\n \n💡 You can change this anytime using the {{- command}} command.",
+                "placeholder": "Select one or more server roles"
+            },
+            "tickets": {
+                "buttons": {
+                    "create_ticket": "Create Ticket",
+                    "close": "Close",
+                    "claim": "Claim",
+                    "lock": "Lock",
+                    "unlock": "Unlock",
+                    "rename": "Rename",
+                    "more_options": "More Options"
+                },
+                "description": {
+                    "header": {
+                        "what_are": "<:Quest:1244053364950696018> What are tickets?",
+                        "how_to": "<:Moderation:1253009192852263144> How to create a ticket?"
+                    },
+                    "what_are": "Tickets are a quick and easy way to get support from the Staff Team, you can ask questions, discuss problems and request information of all kinds.",
+                    "how_to": "To create a ticket, click on the \\\"Create ticket\\\" button and go to the channel specified when creating the ticket. On behalf of the team, we ask that when you create your ticket, you write down your situation or question, to expedite the process."
+                },
+                "newticket": {
+                    "header": "🌿 New Ticket",
+                    "description": "Welcome to your ticket {{user}}, a staff member will contact you soon. For now, we ask you to describe your situation, question or complaint, so we can work better."
+                },
+                "close_ticket": "Your ticket will be deleted {{- time}}.",
+                "claim": {
+                    "errors": {
+                        "already_claimed": "This ticket is already claimed by {{- user}}."
+                    },
+                    "from_now": "From now on, {{user}} will be in charge of this ticket."
+                },
+                "close": {
+                    "errors": {
+                        "already_closed": "This ticket is already getting deleted..."
+                    }
+                },
+                "lock": {
+                    "errors": {
+                        "already_locked": "This ticket is already locked."
+                    },
+                    "success": "The ticket has been locked."
+                },
+                "unlock": {
+                    "errors": {
+                        "not_locked": "This ticket is not locked."
+                    },
+                    "success": "The ticket has been unlocked."
+                },
+                "rename": {
+                    "modal": {
+                        "label": "Rename Ticket",
+                        "ticket_name": "Ticket name",
+                        "placeholder": "Type the new ticket name..."
+                    },
+                    "success": "The ticket has been renamed correctly."
+                },
+                "success": "Your ticket has been successfully created in {{- channel}}.",
+                "ticketoptions": {
+                    "header": "🧭 Ticket Options",
+                    "description": "For ticket administrators, with these options they can manage the ticket. Transcribe the ticket, lock it, rename it, and more with the buttons below."
+                }
+            }
+        },
+        "lang": {
+            "success": "The language has been established to {{- lang}}."
+        },
+        "avatar": {
+            "title": "@{{username}}'s avatar",
+            "requested": "Requested by {{- username}}"
+        },
+        "botinfo": {
+            "title": "Bot Information",
+            "credits": "Credits",
+            "credits_details": "Architecture & Development: woozystudio",
+            "version": "Version"
+        },
+        "channelinfo": {
+            "errors": {
+                "no_support": "No support for forum channels.",
+                "no_topic": "No topic is set or unavailable."
+            },
+            "title": "Channel Information",
+            "topic": "Topic",
+            "parent": "Parent"
+        },
+        "github": {
+            "title": "Open Source Information",
+            "description": "This **wonderful** bot is made so that anyone can use it, this bot is a product of a lot of dedication and love. It is for this reason that it is now an opensource bot!\n \n> If you have knowledge in the development of Discord bots, don't hesitate to collaborate in it! Go to the official Eclipse server for more information about the GitHub repository!",
+            "button": "Open Source"
+        },
+        "guildinfo": {
+            "buttons": {
+                "view_roles": "View Roles",
+                "view_channels": "View Channels"
+            }
+        },
+        "help": {
+            "errors": {
+                "no_command": "No command found with the name `{{command}}`."
+            },
+            "title": "Eclipse Help Menu",
+            "info_commands": "Information Commands",
+            "mod_commands": "Moderation Commands",
+            "description": "Transform your discord server to a place full of creativity and professionalism with unique plugins! \nThese are the commands you can use:",
+            "footer": "Bot developed by: woozystudio",
+            "commandinfo": {
+                "title": "Command information: {{command}}",
+                "usage": "Usage"
+            }
+        },
+        "ping": {
+            "bot_latency": "Bot Latency",
+            "api_latency": "API Latency"
+        },
+        "roleinfo": {
+            "title": "Role Information",
+            "position": "Position"
+        },
+        "mod": {
+            "common": {
+                "errors": {
+                    "no_reason": "No reason provided."
+                }
+            },
+            "addrole": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to addrole to {{- user}}."
+                },
+                "success": "The role {{role}} has been correctly granted to {{- user}}."
+            },
+            "removerole": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to removerole to {{- user}}."
+                },
+                "success": "The role {{role}} has been correctly removed to {{- user}}."
+            },
+            "ban": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to ban user {{- user}}."
+                },
+                "banned_from": "You have been banned from **{{guild}}**.\n \n**Reason:**\n> {{reason}}\n \nYou were banned by {{- user}}.",
+                "success": "The user {{user}} has been banned successfully.\n### Reason:\n```{{reason}}```"
+            },
+            "clear": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to clear messages in {{- channel}}."
+                },
+                "user_success": "Successfully deleted **${messages.size}** messages from {{- user}}.",
+                "success": "Successfully deleted **${messages.size}** messages from the channel."
+            },
+            "kick": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to kick user {{- user}}."
+                },
+                "success": "The user {{user}} has been kicked successfully.\n### Reason:\n```{{reason}}```"
+            },
+            "lock": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to lock {{- channel}}."
+                },
+                "success": "The channel {{channel}} has been successfully locked."
+            },
+            "mute": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to mute {{- user}}."
+                },
+                "success": "The user {{user}} has been successfully muted on the server."
+            },
+            "report": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to report user {{- user}}."
+                },
+                "success": "Your report has been sent successfully."
+            },
+            "tempban": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to temporarily ban {{- user}}."
+                },
+                "duration": "Duration:",
+                "success": "The user {{user}} has been temporarily banned successfully.\nThe ban will be cancelled <t:{{expiresAt}}:R>\n### Reason:\n```{{reason}}```"
+            },
+            "tempmute": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to temporarily mute {{- user}}."
+                },
+                "success": "The user {{user}} has been temporarily muted successfully.\nThe mute will be cancelled <t:{{expiresAt}}:R>."
+            },
+            "temprole": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to temporarily addrole to {{- user}}."
+                },
+                "success": "The user {{user}} has the role {{role}} temporarily.\nThe role will be removed <t:{{expiresAt}}:R>."
+            },
+            "timeout": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to timeout {{- user}}."
+                },
+                "timeout_from": "You have been timeout from **{{guild}}**.\n \n**Reason:**\n> {{reason}}\n \n**Time:**\n> {{expiresAt}}\n \nYou were timeout by {{- user}}.",
+                "success": "The user {{user}} has been timeout successfully.\nThe timeout will be cancelled <t:{{expiresAt}}:R>\n### Reason:\n```{{reason}}```"
+            },
+            "unban": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to unban \\`{{- id}}\\`.",
+                    "id_no_valid": "The ID you provided is invalid or does not exist, try using another one.",
+                    "no_ban": "No ban has been found related to the ID you provided, try using another ID."
+                },
+                "success": "The user {{user}} has been timeout successfully.\n### Reason:\n```{{reason}}```"
+            },
+            "unmute": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to unmute {{- user}}."
+                },
+                "success": "The user {{user}} has been successfully unmuted on the server."
+            },
+            "untimeout": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to untimeout {{- user}}."
+                },
+                "success": "The user {{user}} has been untimeout successfully.\n### Reason:\n```{{reason}}```"
+            },
+            "unlock": {
+                "errors": {
+                    "missing_permissions": "Missing permissions to unlock {{- channel}}."
+                },
+                "success": "The channel {{channel}} has been successfully unlocked."
+            }
+        }
+    }
 }

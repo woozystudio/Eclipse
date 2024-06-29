@@ -2,6 +2,8 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteracti
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class GitHub extends Command {
     constructor(client: Eclipse) {
@@ -22,16 +24,12 @@ export default class GitHub extends Command {
         .setThumbnail(bot?.displayAvatarURL({ size: 2048 }))
         .setAuthor({ iconURL: bot?.displayAvatarURL(), name: `${bot?.username} ${this.client.version.version}` })
         .setColor(0x2B2D31)
-        .setTitle(`Open Source Information`)
-        .setDescription(`
-            This ${bold("wonderful")} bot is made so that anyone can use it, this bot is a product of a lot of dedication and love. It is for this reason that it is now an opensource bot! 
-            
-            > If you have knowledge in the development of Discord bots, don't hesitate to collaborate in it! Go to the official Eclipse server for more information about the GitHub repository!
-        `)
+        .setTitle(`${i18next.t('command.github.title', { lng: LocaleParam })}`)
+        .setDescription(`${i18next.t('command.github.description', { lng: LocaleParam })}`)
 
         const Buttons = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
-            .setLabel("Open Source")
+            .setLabel(`${i18next.t('command.github.button', { lng: LocaleParam })}`)
             .setStyle(ButtonStyle.Link)
             .setEmoji("<:GitHub:1246192509005332511>")
             .setURL("https://github.com/woozystudio/Eclipse")

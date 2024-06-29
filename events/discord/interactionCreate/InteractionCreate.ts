@@ -5,9 +5,10 @@ import Eclipse from "../../../class/Eclipse";
 import ContextMenu from "../../../class/ContextMenu";
 import Button from "../../../class/Button";
 import SelectMenu from "../../../class/SelectMenu";
-import { fetchLanguage } from "../../../types/LocaleParam";
+import { LocaleParam, fetchLanguage } from "../../../types/LocaleParam";
 import Modal from "../../../class/Modal";
 import Case from "../../../enums/Case";
+import i18next from "i18next";
 
 export default class InteractionCreate extends Event {
     constructor(client: Eclipse) {
@@ -25,10 +26,10 @@ export default class InteractionCreate extends Event {
             const command: Command = this.client.commands.get(interaction.commandName)!;
     
             //@ts-ignore
-            if(!command) return interaction.reply({ content: "outdated command", ephemeral: true }) && this.client.commands.delete(interaction.commandName);
+            if(!command) return interaction.reply({ content: `${i18next.t('common.errors.outtodate', { lng: LocaleParam })}`, ephemeral: true }) && this.client.commands.delete(interaction.commandName);
     
             if(command.development && !this.client.config.developers.includes(interaction.user.id))
-                return interaction.reply({ content: `${Case.Error} This command is only for developers!`, ephemeral: true });
+                return interaction.reply({ content: `${Case.Error} ${i18next.t('common.errors.developers_only', { lng: LocaleParam })}`, ephemeral: true });
     
             try {
                 const subCommandGroup = interaction.options.getSubcommandGroup(false);
@@ -44,14 +45,14 @@ export default class InteractionCreate extends Event {
             const contextMenu: ContextMenu = this.client.contextMenus.get(interaction.commandName)!;
 
             if(contextMenu.development && !this.client.config.developers.includes(interaction.user.id))
-                return interaction.reply({ content: `${Case.Error} This command is only for developers!`, ephemeral: true });
+                return interaction.reply({ content: `${Case.Error} ${i18next.t('common.errors.developers_only', { lng: LocaleParam })}`, ephemeral: true });
 
             //@ts-ignore
-            if (!contextMenu) return interaction.reply({ content: `outdated menu` }) && this.client.contextMenus.delete(interaction.commandName);
+            if (!contextMenu) return interaction.reply({ content: `${i18next.t('common.errors.outtodate', { lng: LocaleParam })}` }) && this.client.contextMenus.delete(interaction.commandName);
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(contextMenu.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} You don't have sufficient permissions to execute this command.`, ephemeral: true });
+            if(!target?.permissions.has(contextMenu.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} ${i18next.t('command.common.errors.missing_permissions', { lng: LocaleParam, permissions: contextMenu.default_member_permissions })}`, ephemeral: true });
 
             try {
                 const context = `${interaction.commandName}${interaction.commandType}`
@@ -66,11 +67,11 @@ export default class InteractionCreate extends Event {
             const button: Button = this.client.buttons.get(interaction.customId)!;
 
             //@ts-ignore
-            if (!button) return interaction.reply({ content: `outdated button` }) && this.client.buttons.delete(interaction.customid);
+            if (!button) return interaction.reply({ content: `${i18next.t('common.errors.outtodate', { lng: LocaleParam })}` }) && this.client.buttons.delete(interaction.customid);
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(button.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} You don't have sufficient permissions to execute this button.`, ephemeral: true });
+            if(!target?.permissions.has(button.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} ${i18next.t('command.common.errors.missing_permissions', { lng: LocaleParam, permissions: button.default_member_permissions })}`, ephemeral: true });
 
             try {
                 const buttonId = `${interaction.customId}`;
@@ -85,11 +86,11 @@ export default class InteractionCreate extends Event {
             const selectMenu: SelectMenu = this.client.selectMenus.get(interaction.customId)!;
 
             //@ts-ignore
-            if (!selectMenu) return interaction.reply({ content: `outdated select menu` }) && this.client.selectMenus.delete(interaction.customid);
+            if (!selectMenu) return interaction.reply({ content: `${i18next.t('common.errors.outtodate', { lng: LocaleParam })}` }) && this.client.selectMenus.delete(interaction.customid);
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(selectMenu.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} You don't have sufficient permissions to execute this select menu.`, ephemeral: true });
+            if(!target?.permissions.has(selectMenu.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} ${i18next.t('command.common.errors.missing_permissions', { lng: LocaleParam, permissions: selectMenu.default_member_permissions })}`, ephemeral: true });
 
             try {
                 const selectMenuId = `${interaction.customId}`;
@@ -104,11 +105,11 @@ export default class InteractionCreate extends Event {
             const modal: Modal = this.client.modals.get(interaction.customId)!;
 
             //@ts-ignore
-            if (!modal) return interaction.reply({ content: `outdated modal` }) && this.client.modals.delete(interaction.customid);
+            if (!modal) return interaction.reply({ content: `${i18next.t('common.errors.outtodate', { lng: LocaleParam })}` }) && this.client.modals.delete(interaction.customid);
 
             const target = await interaction.guild?.members.fetch(interaction.user.id);
 
-            if(!target?.permissions.has(modal.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} You don't have sufficient permissions to execute this modal.`, ephemeral: true });
+            if(!target?.permissions.has(modal.default_member_permissions)) return await interaction.reply({ content: `${Case.Error} ${i18next.t('command.common.errors.missing_permissions', { lng: LocaleParam, permissions: modal.default_member_permissions })}`, ephemeral: true });
 
             try {
                 const modalId = `${interaction.customId}`;

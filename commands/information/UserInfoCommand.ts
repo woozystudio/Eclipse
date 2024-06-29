@@ -2,6 +2,8 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class UserInfo extends Command {
     constructor(client: Eclipse) {
@@ -33,10 +35,10 @@ export default class UserInfo extends Command {
         .setAuthor({ iconURL: target?.displayAvatarURL(), name: `${target?.username}` })
         .setColor(0x2B2D31)
         .addFields(
-            { name: 'Date Created', value: `${time(Math.floor(target?.createdTimestamp / 1000))}` },
-            { name: 'Date Joined', value: `${time(Math.floor(member?.joinedTimestamp as number / 1000))}` },
+            { name: `${i18next.t('command.common.date_created', { lng: LocaleParam })}`, value: `${time(Math.floor(target?.createdTimestamp / 1000))}` },
+            { name: `${i18next.t('command.common.date_joined', { lng: LocaleParam })}`, value: `${time(Math.floor(member?.joinedTimestamp as number / 1000))}` },
             { name: 'Roles', value: `${roles?.join(' ')}` },
-            { name: 'Permissions', value: `${permissions?.join(' ')}` },
+            { name: `${i18next.t('command.common.permissions', { lng: LocaleParam })}`, value: `${permissions?.join(' ')}` },
         )
 
         await interaction.reply({ embeds: [UserInfoEmbed], ephemeral: true });

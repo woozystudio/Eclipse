@@ -4,6 +4,8 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import ReportsConfig from "../../database/ReportsConfig";
 import Case from "../../enums/Case";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Reports extends SubCommand {
     constructor(client: Eclipse) {
@@ -20,6 +22,6 @@ export default class Reports extends SubCommand {
         
         await ReportsConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { ChannelID: channel.id, }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${Case.Success} The reporting plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${Case.Success} ${i18next.t('command.config.common.success', { lng: LocaleParam })}`, ephemeral: true });
     }
 }

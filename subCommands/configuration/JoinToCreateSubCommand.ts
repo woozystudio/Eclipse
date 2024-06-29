@@ -4,6 +4,8 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import JoinToCreateConfig from "../../database/JoinToCreateConfig";
 import Case from "../../enums/Case";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class JoinToCreate extends SubCommand {
     constructor(client: Eclipse) {
@@ -21,6 +23,6 @@ export default class JoinToCreate extends SubCommand {
         
         await JoinToCreateConfig.findOneAndUpdate({ GuildID: interaction.guild?.id }, { ChannelID: channel.id, ParentID: category.id }, { new: true, upsert: true });
 
-        await interaction.reply({ content: `${Case.Success} The join to create plugin has been successfully configured.`, ephemeral: true });
+        await interaction.reply({ content: `${Case.Success} ${i18next.t('command.config.common.success', { lng: LocaleParam })}`, ephemeral: true });
     }
 }

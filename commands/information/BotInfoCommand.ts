@@ -2,6 +2,8 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteracti
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class BotInfo extends Command {
     constructor(client: Eclipse) {
@@ -23,13 +25,13 @@ export default class BotInfo extends Command {
         .setAuthor({ iconURL: bot?.displayAvatarURL(), name: `${bot?.username}` })
         .setColor(0x2B2D31)
         .setTitle(`${bot.username}`)
-        .setDescription("Bot Information")
+        .setDescription(`${i18next.t('command.botinfo.title', { lng: LocaleParam })}`)
         .addFields(
-            { name: 'Nickname', value: `${bot.username}`, inline: true },
-            { name: 'User', value: `${bot}`, inline: true },
-            { name: 'Credits', value: `Architecture & Development: woozystudio`, inline: false },
-            { name: 'Version', value: `${this.client.version.version}`, inline: true },
-            { name: 'Date Created', value: `${time(Math.floor(bot?.createdTimestamp / 1000))}`, inline: true },
+            { name: `${i18next.t('command.common.name', { lng: LocaleParam })}`, value: `${bot.username}`, inline: true },
+            { name: `User`, value: `${bot}`, inline: true },
+            { name: `${i18next.t('command.botinfo.credits', { lng: LocaleParam })}`, value: `${i18next.t('command.botinfo.credits_details', { lng: LocaleParam })}`, inline: false },
+            { name: `${i18next.t('command.botinfo.version', { lng: LocaleParam })}`, value: `${this.client.version.version}`, inline: true },
+            { name: `${i18next.t('command.common.date_created', { lng: LocaleParam })}`, value: `${time(Math.floor(bot?.createdTimestamp / 1000))}`, inline: true },
         )
 
         await interaction.reply({ embeds: [BotInfoEmbed], ephemeral: true });

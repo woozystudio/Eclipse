@@ -1,3 +1,278 @@
 {
-    "lang": "Español"
+    "common": {
+        "errors": {
+            "developers_only": "Este comando es sólo para desarrolladores.",
+            "outtodate": "No actualizado. Inténtalo más tarde."
+        }
+    },
+    "command": {
+        "common": {
+            "errors": {
+                "target_not_found": "El usuario seleccionado no está en este servidor.",
+                "generic": "Se ha producido un error.",
+                "missing_permissions": "Permisos insuficientes: {{- permissions}}.",
+                "bot_missing_permissions": "Permisos insuficientes del bot: {{- permissions}}.",
+                "user_grater": "No puedes seleccionar a un usuario con un role mayor o igual.",
+                "higher_role": "No puedes seleccionar un role mayor que el mío.",
+                "user_greater_perms": "No puedes seleccionar a un usuario con permisos mayores o iguales a los míos."
+            },
+            "date_created": "Fecha de Creación",
+            "name": "Nombre",
+            "permissions": "Permisos",
+            "owner": "Dueño",
+            "date_joined": "Fecha de Ingreso",
+            "description": "Descripción",
+            "type": "Tipo",
+            "channel": "Canales",
+            "members": "Miembros",
+            "channels": {
+                "text": "Texto",
+                "voice": "Voz",
+                "stage": "Escenario",
+                "category": "Categoría",
+                "announcement": "Anuncios",
+                "announcement_thread": "Hilos de Anuncios",
+                "forum": "Foro",
+                "media": "Media",
+                "private_thread": "Hilos Privados",
+                "public_thread": "Hilos Públicos"
+            }
+        },
+        "config": {
+            "common": {
+                "errors": {
+                    "no_plugin_settings": "Este plugin aún no se ha configurado."
+                },
+                "success": "El plugin se ha configurado correctamente."
+            },
+            "joinroles": {
+                "description": "❓ Selecciona los roles que serán otorgados automáticamente a los usuarios que ingresen al servidor.\n \n💡 Puede cambiar esto en cualquier momento utilizando el comando {{- command}}.",
+                "placeholder": "Selecciona uno o varios roles de servidor"
+            },
+            "tickets": {
+                "buttons": {
+                    "create_ticket": "Crear Ticket",
+                    "close": "Cerrar",
+                    "claim": "Reclamar",
+                    "lock": "Bloquear",
+                    "unlock": "Desbloquear",
+                    "rename": "Renombrar",
+                    "more_options": "Más Opciones"
+                },
+                "description": {
+                    "header": {
+                        "what_are": "<:Quest:1244053364950696018> ¿Qué son los tickets?",
+                        "how_to": "<:Moderation:1253009192852263144> ¿Cómo crear un ticket?"
+                    },
+                    "what_are": "Los tickets son una forma rápida y sencilla de obtener ayuda del equipo de staff, puede hacer preguntas, discutir problemas y solicitar información de todo tipo.",
+                    "how_to": "Para crear un ticket, haga clic en el botón \"Crear ticket\" y diríjase al canal especificado al crear el ticket. De parte del equipo, le pedimos que cuando cree su ticket escriba su situación o pregunta, para agilizar el proceso."
+                },
+                "newticket": {
+                    "header": "🌿 Nuevo Ticket",
+                    "description": "Bienvenido a su ticket {{user}}, un miembro del personal se pondrá en contacto con usted en breve. Por ahora, le pedimos que describa su situación, pregunta o queja, para que podamos agilizar el proceso."
+                },
+                "close_ticket": "El ticket se eliminará {{- time}}.",
+                "claim": {
+                    "errors": {
+                        "already_claimed": "Este ticket ya ha sido reclamado por {{- user}}."
+                    },
+                    "from_now": "Desde ahora, {{user}} se encargará de este ticket."
+                },
+                "close": {
+                    "errors": {
+                        "already_closed": "Este ticket ya está siendo eliminado..."
+                    }
+                },
+                "lock": {
+                    "errors": {
+                        "already_locked": "Este ticket ya está bloqueado."
+                    },
+                    "success": "El ticket ha sido bloqueado con éxito."
+                },
+                "unlock": {
+                    "errors": {
+                        "not_locked": "Este ticket no está bloqueado."
+                    },
+                    "success": "El ticket ha sido desbloqueado con éxito."
+                },
+                "rename": {
+                    "modal": {
+                        "label": "Renombrar Ticket",
+                        "ticket_name": "Nombre del Ticket",
+                        "placeholder": "Escribe el nuevo nombre del ticket..."
+                    },
+                    "success": "El ticket ha sido renombrado con éxito."
+                },
+                "success": "Su ticket ha sido creado con éxito en {{- channel}}.",
+                "ticketoptions": {
+                    "header": "🧭 Opciones del Ticket",
+                    "description": "Para los administradores de tickets, con estas opciones pueden gestionar el ticket. Transcribir el ticket, bloquearlo, renombrarlo y más con los botones de abajo."
+                }
+            }
+        },
+        "lang": {
+            "success": "El idioma se ha establecido a {{- lang}}."
+        },
+        "avatar": {
+            "title": "Avatar de {{- username}}",
+            "requested": "Solicitado por {{- username}}"
+        },
+        "botinfo": {
+            "title": "Información del Bot",
+            "credits": "Créditos",
+            "credits_details": "Arquitectura y desarrollo: woozystudio",
+            "version": "Versión"
+        },
+        "channelinfo": {
+            "errors": {
+                "no_support": "No hay soporte para los canales del foro.",
+                "no_topic": "No hay tema o no está disponible."
+            },
+            "title": "Información del Canal",
+            "topic": "Tema",
+            "parent": "Categoría"
+        },
+        "github": {
+            "title": "Información del código abierto",
+            "description": "Este **maravilloso** bot está hecho para que cualquiera pueda usarlo, este bot es producto de mucha dedicación y amor. ¡Es por esta razón que ahora es un bot opensource!\n \n> ¡Si tienes conocimientos en el desarrollo de bots de Discord, no dudes en colaborar en él! ¡Ve al servidor oficial de Eclipse para más información sobre el repositorio GitHub!",
+            "button": "Código Abierto"
+        },
+        "guildinfo": {
+            "buttons": {
+                "view_roles": "Ver Roles",
+                "view_channels": "Ver Roles"
+            }
+        },
+        "help": {
+            "errors": {
+                "no_command": "No se ha encontrado ningún comando con el nombre `{{command}}`."
+            },
+            "title": "Menú de Ayuda",
+            "info_commands": "Comandos de Información",
+            "mod_commands": "Comandos de Moderación",
+            "description": "¡Transforma tu servidor de discord en un lugar lleno de creatividad y profesionalidad con plugins únicos! \nEstos son los comandos que puedes utilizar:",
+            "footer": "Bot desarrollado por: woozystudio",
+            "commandinfo": {
+                "title": "Información del comando: {{command}}",
+                "usage": "Uso"
+            }
+        },
+        "ping": {
+            "bot_latency": "Latencia del Bot",
+            "api_latency": "Latencia de la API"
+        },
+        "roleinfo": {
+            "title": "Información del Role",
+            "position": "Posición"
+        },
+        "mod": {
+            "common": {
+                "errors": {
+                    "no_reason": "No se ha dado ninguna razón."
+                }
+            },
+            "addrole": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para añadir el role a {{- user}}."
+                },
+                "success": "El role {{role}} ha sido otorgado correctamente a {{- user}}."
+            },
+            "removerole": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para remover el role a {{- user}}."
+                },
+                "success": "El role {{role}} ha sido removido correctamente de {{- user}}."
+            },
+            "ban": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para banear a {{- user}}."
+                },
+                "banned_from": "Has sido baneado del servidor **{{guild}}**.\n \n**Razón:**\n> {{reason}}\n \nFuiste baneado por {{- user}}.",
+                "success": "El usuario {{user}} ha sido baneado con éxito.\n### Razón:\n```{{reason}}```"
+            },
+            "clear": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para eliminar mensajes en {{- channel}}."
+                },
+                "user_success": "Se han eliminado **${messages.size}** mensajes de {{- usuario}} con éxito.",
+                "success": "Se han eliminado **${messages.size}** mensajes del canal con éxito."
+            },
+            "kick": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para expulsar a {{- user}}."
+                },
+                "success": "El usuario {{user}} ha sido expulsado con éxito.\n### Razón:\n```{{reason}}```"
+            },
+            "lock": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para bloquear el canal {{- channel}}."
+                },
+                "success": "El canal {{channel}} ha sido bloqueado con éxito."
+            },
+            "mute": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para silenciar a {{- user}}."
+                },
+                "success": "El usuario {{user}} ha sido silenciado correctamente en el servidor."
+            },
+            "report": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para reportar a {{- user}}."
+                },
+                "success": "Tu reporte se ha enviado correctamente."
+            },
+            "tempban": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para banear temporalmente a {{- user}}."
+                },
+                "duration": "Duración:",
+                "success": "El usuario {{user}} ha sido baneado temporalmente con éxito.\nEl baneo se anulará <t:{{expiresAt}}:R>\n### Razón:\n```{{reason}}```"
+            },
+            "tempmute": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para silenciar temporalmente a {{- user}}."
+                },
+                "success": "El usuario {{user}} ha sido silenciado temporalmente con éxito.\nEl muteo se anulará <t:{{expiresAt}}:R>."
+            },
+            "temprole": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para añadir temporalmente el role a {{- user}}."
+                },
+                "success": "El usuario {{user}} tiene el rol {{role}} temporalmente.\nEl rol será eliminado <t:{{expiresAt}}:R>."
+            },
+            "timeout": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para aislar a {{- user}}."
+                },
+                "timeout_from": "Has sido aislado del servidor **{{guild}}**.\n \n**Razón:**\n> {{reason}}\n \n**Tiempo:**\n> {{expiresAt}}\n \nFuiste aislado por {{- user}}.",
+                "success": "El usuario {{user}} ha sido aislado temporalmente con éxito. \nEl aislamiento se anulará <t:{{expiresAt}}:R>\n### Razón:\n```{{reason}}```"
+            },
+            "unban": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para desbanear la ID \\`{{- id}}\\`.",
+                    "id_no_valid": "El ID que ha proporcionado no es válido o no existe, intente utilizar otro.",
+                    "no_ban": "No se ha encontrado ningún ban relacionado con el ID que has proporcionado, intenta utilizar otro ID."
+                },
+                "success": "El usuario {{user}} ha sido desbaneado con éxito.\n### Razón:\n```{{reason}}```"
+            },
+            "unmute": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para desbloquear el canal {{- channel}}."
+                },
+                "success": "El canal {{channel}} ha sido desbloqueado con éxito."
+            },
+            "untimeout": {
+                "errors": {
+                    "missing_permissions": "Me faltan permisos para desmutear al usuario {{- user}}."
+                },
+                "success": "Se ha desmuteado el usuario {{user}} correctamente en el servidor."
+            },
+            "unlock": {
+                "errors": {
+                    "missing_permissions": "El aislamiento del usuario {{user}} ha sido anulado con éxito.\n### Razón:\n```{{reason}}```"
+                },
+                "success": "El aislamiento del usuario {{user}} ha sido anulado con éxito.\n### Razón:\n```{{reason}}```"
+            }
+        }
+    }
 }

@@ -2,6 +2,8 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction, EmbedBuilder
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class ChannelInfo extends Command {
     constructor(client: Eclipse) {
@@ -31,43 +33,43 @@ export default class ChannelInfo extends Command {
 
         switch (channel?.type) {
             case 0:
-                type = "Text Channel";
+                type = `${i18next.t('command.common.channels.text', { lng: LocaleParam })}`
                 break;
             case 2:
-                type = "Voice Channel"
+                type = `${i18next.t('command.common.channels.voice', { lng: LocaleParam })}`
                 break;
             case 5:
-                type = "Announcement Channel"
+                type = `${i18next.t('command.common.channels.announcement', { lng: LocaleParam })}`
                 break;
             case 13:
-                type = "Stage Channel"
+                type = `${i18next.t('command.common.channels.stage', { lng: LocaleParam })}`
                 break;
             case 15:
-                type = "Forum Channel"
-                topic = "No support for forum channels"
+                type = `${i18next.t('command.common.channels.forum', { lng: LocaleParam })}`
+                topic = `${i18next.t('command.channelinfo.errors.no_support', { lng: LocaleParam })}`
                 break;
             case 16:
-                type = "Media Channel"
-                topic = "No support for forum channels"
+                type = `${i18next.t('command.common.channels.media', { lng: LocaleParam })}`
+                topic = `${i18next.t('command.channelinfo.errors.no_support', { lng: LocaleParam })}`
                 break;
             case 12:
-                type = "Private Thread Channel"
+                type = `${i18next.t('command.common.channels.private_thread', { lng: LocaleParam })}`
                 break;
             case 11:
-                type = "Public Thread Channel"
+                type = `${i18next.t('command.common.channels.public_thread', { lng: LocaleParam })}`
                 break;
         }
 
         const ChannelInfoEmbed = new EmbedBuilder()
-        .setTitle("Channel Information")
+        .setTitle(`${i18next.t('command.channelinfo.title', { lng: LocaleParam })}`)
         .setColor(0x2B2D31)
         .addFields(
-            { name: 'Name', value: `${codeBlock(`${channel?.name}`)}`, inline: true },
+            { name: `${i18next.t('command.common.name', { lng: LocaleParam })}`, value: `${codeBlock(`${channel?.name}`)}`, inline: true },
             { name: 'ID', value: `${codeBlock(`${channel?.id}`)}`, inline: true },
-            { name: 'Topic', value: `${codeBlock(`${topic || "No topic is set or unavailable"}`)}`, inline: false },
-            { name: 'Type', value: `${codeBlock(`${type}`)}`, inline: true },
-            { name: 'Parent', value: `${codeBlock(`${channels?.parent?.name}`)}`, inline: true },
-            { name: 'Date created', value: `${time(Math.floor(channels?.createdTimestamp as number / 1000))}`, inline: false },
+            { name: `${i18next.t('command.channelinfo.topic', { lng: LocaleParam })}`, value: `${codeBlock(`${topic || `${i18next.t('command.channelinfo.errors.no_topic', { lng: LocaleParam })}` }`)}`, inline: false },
+            { name: `${i18next.t('command.common.type', { lng: LocaleParam })}`, value: `${codeBlock(`${type}`)}`, inline: true },
+            { name: `${i18next.t('command.channelinfo.parent', { lng: LocaleParam })}`, value: `${codeBlock(`${channels?.parent?.name}`)}`, inline: true },
+            { name: `${i18next.t('command.common.date_created', { lng: LocaleParam })}`, value: `${time(Math.floor(channels?.createdTimestamp as number / 1000))}`, inline: false },
         )
 
         await interaction.reply({ embeds: [ChannelInfoEmbed], ephemeral: true });

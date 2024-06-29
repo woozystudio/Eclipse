@@ -2,6 +2,8 @@ import { ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, codeBlo
 import Command from "../../class/Command";
 import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Ping extends Command {
     constructor(client: Eclipse) {
@@ -19,8 +21,8 @@ export default class Ping extends Command {
         const PingEmbed = new EmbedBuilder()
         .setColor(0x2B2D31)
         .addFields(
-            { name: `${inlineCode("🎫")} Bot Latency`, value: `${codeBlock(`${Date.now() - interaction.createdTimestamp}`)}`, inline: true },
-            { name: `${inlineCode("🌐")} API Latency`, value: `${codeBlock(`${this.client.ws.ping}`)}`, inline: true }
+            { name: `🔧 ${i18next.t('command.ping.bot_latency', { lng: LocaleParam })}`, value: `${codeBlock(`${Date.now() - interaction.createdTimestamp}`)}`, inline: true },
+            { name: `🌐 ${i18next.t('command.ping.api_latency', { lng: LocaleParam })}`, value: `${codeBlock(`${this.client.ws.ping}`)}`, inline: true }
         )
 
         await interaction.reply({ embeds: [PingEmbed], ephemeral: true });
