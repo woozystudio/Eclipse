@@ -12,7 +12,7 @@ export default class AvatarMenu extends ContextMenu {
             type: ApplicationCommandType.User,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             category: Category.Information,
-            development: true
+            development: false
         });
     }
 
