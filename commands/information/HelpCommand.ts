@@ -4,6 +4,8 @@ import Eclipse from "../../class/Eclipse";
 import Category from "../../enums/Category";
 import CommandOption from "../../types/CommandOption";
 import Case from "../../enums/Case";
+import i18next from "i18next";
+import { LocaleParam } from "../../types/LocaleParam";
 
 export default class Help extends Command {
     constructor(client: Eclipse) {
@@ -32,7 +34,7 @@ export default class Help extends Command {
             const findCommand = commands.find(cmd => cmd.name === command);
 
             if (!findCommand) {
-                await interaction.reply({ content: `${Case.Error} No command found with the name ${inlineCode(command)}`, ephemeral: true });
+                await interaction.reply({ content: `${Case.Error} ${i18next.t('command.help.errors.no_command', { lng: LocaleParam, command: inlineCode(command) })}`, ephemeral: true });
                 return;
             }
 
@@ -40,13 +42,13 @@ export default class Help extends Command {
 
             const HelpWithCommand = new EmbedBuilder()
             .setAuthor({ iconURL: this.client.user?.displayAvatarURL(), name: `${this.client.user?.username} ${this.client.version.version}` })
-            .setTitle(`Command information: ${command}`)
+            .setTitle(`${i18next.t('command.help.commandinfo.title', { lng: LocaleParam, command: command })}`)
             .setColor(0x2B2D31)
             .addFields(
-                { name: 'Description', value: `${findCommand.description}` },
-                { name: 'Usage', value: `${inlineCode(`/${findCommand.name}`)} ${options}` }
+                { name: `${i18next.t('command.common.description', { lng: LocaleParam })}`, value: `${findCommand.description}` },
+                { name: `${i18next.t('command.help.commandinfo.usage', { lng: LocaleParam })}`, value: `${inlineCode(`/${findCommand.name}`)} ${options}` }
             )
-            .setFooter({ text: `Bot developed by: woozystudio` })
+            .setFooter({ text: `${i18next.t('command.help.footer', { lng: LocaleParam })}` })
 
             await interaction.reply({ embeds: [HelpWithCommand], ephemeral: true })
 
@@ -57,14 +59,14 @@ export default class Help extends Command {
 
             const HelpCommand = new EmbedBuilder()
             .setAuthor({ iconURL: this.client.user?.displayAvatarURL(), name: `${this.client.user?.username} ${this.client.version.version}` })
-            .setTitle(`Eclipse Help Menu`)
+            .setTitle(`${i18next.t('command.help.title', { lng: LocaleParam })}`)
             .setColor(0x2B2D31)
             .addFields(
-                { name: `Slash Commands: ${inlineCode('/')}`, value: `Transform your discord server to a place full of creativity and professionalism with unique plugins! \nThese are the commands you can use:` },
-                { name: 'Information Commands', value: `${infoCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
-                { name: 'Moderation Commands', value: `${modCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
+                { name: `Slash Commands: ${inlineCode('/')}`, value: `${i18next.t('command.help.description', { lng: LocaleParam })}` },
+                { name: `${i18next.t('command.help.info_commands', { lng: LocaleParam })}`, value: `${infoCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
+                { name: `${i18next.t('command.help.mod_commands', { lng: LocaleParam })}`, value: `${modCommands.map(cmd => inlineCode(cmd.name)).join(' ')}` },
             )
-            .setFooter({ text: `Bot developed by: woozystudio` })
+            .setFooter({ text: `${i18next.t('command.help.footer', { lng: LocaleParam })}` })
     
             await interaction.reply({ embeds: [HelpCommand], ephemeral: true });
         }
